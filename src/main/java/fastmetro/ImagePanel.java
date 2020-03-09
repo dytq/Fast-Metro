@@ -20,11 +20,9 @@ public class ImagePanel extends JPanel{
     protected void paintComponent(Graphics g) {
    	 try {
    		Image img = ImageIO.read(new File(chemin));
-   		
     	g.drawImage(img, 0, 0, this);
 	 } catch (IOException e) {
          e.printStackTrace();
-       }       
+	 	}       
     }
-
 }

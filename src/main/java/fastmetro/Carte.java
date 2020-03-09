@@ -1,5 +1,7 @@
 package fastmetro;
 
+import java.awt.geom.Point2D;
+
 public class Carte {
 	/* Matrice d'adjacence */
 	private Fenetre fenetre;
@@ -10,11 +12,13 @@ public class Carte {
 	
 	public void afficherCarte(String nom,String chemin) {
 		this.fenetre = new Fenetre(nom);
-		this.fenetre.importerImage(chemin);
+		fenetre.importerImage(chemin);
 	}
 	
-	public void recupereCoords() {
-		this.fenetre.afficherCoords();
+	public void drawStation(String chemin) {
+		/*oint2D point = new Point2D.Double();*/
+		fenetre.drawStation(chemin);
+		/*System.out.print(point.toString()); */
 	}
 	
 	public void initCarte(String fichier) {

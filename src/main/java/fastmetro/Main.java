@@ -8,9 +8,10 @@ public class Main {
 		metroParisien.afficherCarte("Metro Parisien","image/paris.gif");
 		// Mode dev:
 		
-		metroParisien.recupereCoords();
-		Lecture l = new Lecture();
-		l.test();
+		
+		
+		/*Lecture l = new Lecture();
+		l.test();*/
 		
 		// metroParisien.initCarte("test.json");
 		
