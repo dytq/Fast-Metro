@@ -42,6 +42,6 @@ public class Fenetre extends JFrame {
 	public void addStation(String cheminEcriture) {
 		StationPanel panel = new StationPanel(cheminCarte, cheminEcriture); // dessine les stations sur la carte
 		this.add(panel);
-		panel.addMouseListener(new ClickDrawStation(panel));
+		panel.addMouseListener(new ClickDrawStation(panel,cheminEcriture));
 	}
 }
