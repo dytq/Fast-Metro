@@ -10,7 +10,10 @@ public class ClickDrawStation implements MouseListener {
 		super();
 		this.panel = panel2;
 	}
-
+	
+	/**
+	 * Quand on clique on ajoute un cercle
+	 */
 	@Override
 	public void mouseClicked(MouseEvent event) {
 		panel.addCircle(new Circle(event.getX(), event.getY()));

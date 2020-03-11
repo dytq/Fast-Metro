@@ -16,6 +16,13 @@ public class Station {
 	/* Coordonnées sur la map (centre du cercle) */
 	private Point2D coords;
 
+	/**
+	 * Voici les composants d'une station:
+	 * @param id
+	 * @param nom
+	 * @param ligne
+	 * @param coords
+	 */
 	public Station(int id, String nom, int ligne, Point2D coords) {
 		this.setId(id);
 		this.setNom(nom);

@@ -15,17 +15,32 @@ public class StationPanel extends JPanel {
 
 	private String cheminCarte;
 	private String cheminEcriture;
-
+	
+	/**
+	 * Pannel Station  est une classe pour ajouter une station dans une map.
+	 * On ajoute une cercle sur une map donc c'est pourquoi on a cheminCarte (c'est ici qu'on affiche la map)
+	 * @param cheminCarte
+	 * @param cheminEcriture
+	 */
 	public StationPanel(String cheminCarte, String cheminEcriture) {
 		this.cheminCarte = cheminCarte;
 		this.cheminEcriture = cheminEcriture;
 	}
 
+	/**
+	 * Ajout d'un cercle dans une tableau
+	 * @param circle
+	 */
 	public void addCircle(Circle circle) {
 		circles.add(circle);
 		this.repaint();
 	}
-
+	
+	/**
+	 * Dessiner un cercle et une image 
+	 * J'ai les mis dans une meme buffered vu qu'on dessine une station sur une map
+	 */
+	@Override
 	public void paint(Graphics g) {
 		Image img = bufferedImage();
 		g.drawImage(img, 0, 0, this);

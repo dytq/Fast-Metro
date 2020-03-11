@@ -15,12 +15,21 @@ public class Circle extends JPanel {
 	private int x;
 	private int y;
 
+	/**
+	 * Cercle 
+	 * @param x coords
+	 * @param y coords
+	 */
 	public Circle(int x, int y) {
 		super();
 		this.x = x - 5;
 		this.y = y - 5;
 	}
-
+	
+	/**
+	 * Caracteristique d'un cercle 
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.red);
