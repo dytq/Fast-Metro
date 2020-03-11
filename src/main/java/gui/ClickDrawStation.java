@@ -1,23 +1,21 @@
-package fastmetro;
-
+package gui;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-
-
 public class ClickDrawStation implements MouseListener {
-	private String chemin;
-	
-	public void setChemin(String chemin) {
-		this.chemin = chemin;
+	private StationPanel panel;
+
+	public ClickDrawStation(StationPanel panel2) {
+		super();
+		this.panel = panel2;
 	}
-	
+
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-			
-		}
-	
+	public void mouseClicked(MouseEvent event) {
+		panel.addCircle(new Circle(event.getX(), event.getY()));
+	}
+
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -26,7 +24,7 @@ public class ClickDrawStation implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package fastmetro;
+package gui;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -7,9 +7,9 @@ public class ClickSelectStation implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-			/* selection des stations */
-		}
-	
+		/* selection des stations */
+	}
+
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -18,7 +18,7 @@ public class ClickSelectStation implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
