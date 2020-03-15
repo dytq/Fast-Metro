@@ -19,11 +19,11 @@ public class Ecriture {
 
 	private String chemin;
 	private Scanner prompt = new Scanner(System.in);
-	private static ArrayList<Station> stationList = new ArrayList<Station>();
+	private static ArrayList<Gare> stationList = new ArrayList<Gare>();
 
 	public Ecriture(String chemin_d_ecriture) {
 		this.chemin = chemin_d_ecriture;
-		
+
 	}
 
 	public void scanPrompt(Point point) throws IOException {
@@ -36,23 +36,34 @@ public class Ecriture {
 			ecrireFichierStation();
 			break;
 		default:
-			System.out.println("Entrer le numéro d'identifiant ");
-			String numID = prompt.nextLine();
 
-			System.out.println("Entrer le nom de la station");
-			String nomStation = prompt.nextLine();
+			System.out.println("Entrer le nom de la gare");
+			String nomGare = prompt.nextLine();
 
-			System.out.println("Entrer le numéro de la ligne");
-			String numLigne = prompt.nextLine();
+			Gare gare = new Gare(nomGare, point);
+			String isEnd;
+			do {
+				System.out.println("Entrer le numéro d'identifiant ");
+				String numID = prompt.nextLine();
 
-			ajoutStationToList(point, numID, nomStation, numLigne);
-			System.out.println("Station ajouté:Attendre clic");
+				System.out.println("Entrer le numéro de la ligne");
+				String numLigne = prompt.nextLine();
+				
+				ajoutStationToGare(point, numID, nomStation, numLigne);
+				
+				System.out.println("Ajouter une nouvelle station? [y/n]");
+				isEnd = prompt.nextLine();
+			} while (isEnd != "yes");
+			
+			ajoutGareToList(); 
+			System.out.println("Gare ajouté mémoire temporaire:Attendre clic");
 		}
 	}
 
-	private void ajoutStationToList(Point point, String numID, String nomStation, String numLigne) {
+	private void ajoutGareToList(Point point, String numID, String nomStation, String numLigne) {
 		int id = Integer.parseInt(numID);
 		int ligne = Integer.parseInt(numLigne);
+
 		Station station = new Station(id, nomStation, ligne, point);
 		stationList.add(station);
 		System.out.println(station.toString());
