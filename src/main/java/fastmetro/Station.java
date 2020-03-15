@@ -1,6 +1,6 @@
 package fastmetro;
 
-import java.awt.geom.Point2D;
+import java.awt.Point;
 
 public class Station {
 
@@ -14,52 +14,19 @@ public class Station {
 	private int ligne;
 
 	/* Coordonnées sur la map (centre du cercle) */
-	private Point2D coords;
+	private Point coords;
 
 	/**
-	 * Voici les composants d'une station:
+	 * Voici less composants d'une station:
 	 * @param id
 	 * @param nom
 	 * @param ligne
 	 * @param coords
 	 */
-	public Station(int id, String nom, int ligne, Point2D coords) {
-		this.setId(id);
-		this.setNom(nom);
-		this.setLigne(ligne);
-		this.setCoords(coords);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
+	public Station(int id,String nom,int ligne,Point coords) {
 		this.id = id;
-	}
-
-	public Point2D getCoords() {
-		return coords;
-	}
-
-	public void setCoords(Point2D coords) {
+		this.nom = nom;
+		this.ligne = ligne;
 		this.coords = coords;
 	}
-
-	public int getLigne() {
-		return ligne;
-	}
-
-	public void setLigne(int ligne) {
-		this.ligne = ligne;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
 }

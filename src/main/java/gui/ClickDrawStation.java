@@ -1,8 +1,10 @@
 package gui;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Point2D;
+import java.io.IOException;
 
 import fastmetro.Ecriture;
 
@@ -23,8 +25,13 @@ public class ClickDrawStation implements MouseListener {
 	public void mouseClicked(MouseEvent event) {
 		Ecriture e = new Ecriture(cheminEcriture);
 		panel.addCircle(new Circle(event.getX(), event.getY()));
-		Point2D point2D = new Point2D.Double(event.getX(),event.getY());
-		e.scanPrompt(point2D);
+		Point point = new Point(event.getX(),event.getY());
+		try {
+			e.scanPrompt(point);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	@Override
