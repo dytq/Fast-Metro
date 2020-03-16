@@ -51,7 +51,8 @@ public class Ecriture {
 				
 				System.out.println("Ajouter une nouvelle station? [y/n]");
 				isEnd = prompt.nextLine();
-			} while (isEnd == "y");
+				
+			} while (isEnd.contains("y")); 
 			
 			ajoutGareToList(gare); 
 			System.out.println("Gare ajouté mémoire temporaire:Attendre clic");
