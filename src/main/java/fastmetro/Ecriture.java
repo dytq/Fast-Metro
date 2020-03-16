@@ -1,8 +1,6 @@
 package fastmetro;
 
-import java.awt.List;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -19,7 +17,7 @@ public class Ecriture {
 
 	private String chemin;
 	private Scanner prompt = new Scanner(System.in);
-	private static ArrayList<Gare> stationList = new ArrayList<Gare>();
+	private static ArrayList<Gare> gareList = new ArrayList<Gare>();
 
 	public Ecriture(String chemin_d_ecriture) {
 		this.chemin = chemin_d_ecriture;
@@ -45,28 +43,29 @@ public class Ecriture {
 			do {
 				System.out.println("Entrer le numéro d'identifiant ");
 				String numID = prompt.nextLine();
-
+				
 				System.out.println("Entrer le numéro de la ligne");
 				String numLigne = prompt.nextLine();
 				
-				ajoutStationToGare(point, numID, nomStation, numLigne);
+				ajoutStationToGare(numID, numLigne,gare);
 				
 				System.out.println("Ajouter une nouvelle station? [y/n]");
 				isEnd = prompt.nextLine();
-			} while (isEnd != "yes");
+			} while (isEnd == "y");
 			
-			ajoutGareToList(); 
+			ajoutGareToList(gare); 
 			System.out.println("Gare ajouté mémoire temporaire:Attendre clic");
 		}
 	}
-
-	private void ajoutGareToList(Point point, String numID, String nomStation, String numLigne) {
+	
+	private void ajoutStationToGare(String numID,String numLigne,Gare gare) {
 		int id = Integer.parseInt(numID);
 		int ligne = Integer.parseInt(numLigne);
+		gare.addStation(new Station(id,ligne));
+	}
 
-		Station station = new Station(id, nomStation, ligne, point);
-		stationList.add(station);
-		System.out.println(station.toString());
+	private void ajoutGareToList(Gare gare) {
+		gareList.add(gare);
 	}
 
 	private void ecrireFichierStation() throws IOException {
@@ -74,8 +73,7 @@ public class Ecriture {
 			Writer writer = new FileWriter(chemin);
 			GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
 			Gson gson = builder.create();
-			gson.toJson(stationList, writer);
-
+			gson.toJson(gareList, writer);
 			writer.close();
 			System.out.println("Station enregistré dans " + chemin);
 			System.out.println("Fin du programme");
