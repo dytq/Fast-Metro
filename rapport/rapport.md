@@ -8,17 +8,7 @@ Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux
 java -jar fastmetro.jar
 
 ## Mode d'Emploi
-Quand on lance le logiciel, vous avez surement sur le prompt le message suivant:
-`` Choose your mode [es,eg,u]:  ``
-
-### u: Mode utilisateur
 On selectionnne les deux stations qu'on souhaite voir le plus court chemin et le logiciel se charge de l'afficher.
-
-### es: Mode editeur - Init Station
-Sert a initialiser des stations et à le sauvegarder dans un fichier. On clique sur la map et on rentre les informations necessaire sur le prompt.
-
-### eg: Mode editeur - Init Graphe
-On utilise le prompt pour entrer les valeurs du graphe
 
 ## Explication de la structure du projet
 Voici un résumer de la structure du projet:

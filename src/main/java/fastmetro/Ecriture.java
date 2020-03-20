@@ -85,6 +85,6 @@ public class Ecriture {
 	}
 
 	public void ecrireFichierGraphe(int numID1, int numID2, int temps) {
-		/* ecrire json */
+		/* à ecrire */
 	}
 }

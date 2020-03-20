@@ -1,7 +1,5 @@
 package fastmetro;
 
-import java.awt.Point;
-
 public class Station {
 
 	/* Identifiant unique */

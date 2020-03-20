@@ -6,8 +6,11 @@ public class Main {
 
 		Carte metroParisien = new Carte("Metro Parisien");
 		metroParisien.importCarte("image/paris.gif");
-		metroParisien.drawStation("data/parisStation.json");
-
+		metroParisien.importStations("data/parisStation.json");
+		metroParisien.importGraphe("data/parisGraphe.json");
+		metroParisien.cherchePlusCourtChemin();
+		//metroParisien.drawStation("data/parisStation.json"); 		
+		// metroParisien.ecrireGraphe("data/parisGraphe.json"); 
 	}
 
 }
