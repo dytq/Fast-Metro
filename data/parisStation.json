@@ -1956,7 +1956,7 @@
 						"x":10,
 						"y":10
 		},
-		"station": [
+		"stationGare": [
 						{
 										"id":175,
 										"ligne": 12
@@ -1969,6 +1969,7 @@
 										"id":177,
 										"ligne":8
 						}
+						]
 	},
   {
     "nom": "Mairie d\u0027Issy",

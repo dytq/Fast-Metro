@@ -20,7 +20,8 @@ public class Carte {
 	}
 	
 	public void importStations(String chemin) {
-		
+		Lecture lecture = new Lecture();
+		lecture.initStation(chemin);;
 	}
 	
 	public void importGraphe(String chemin) {

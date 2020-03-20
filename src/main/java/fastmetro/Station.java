@@ -9,15 +9,34 @@ public class Station {
 	private int ligne;
 
 	/**
-	 * Voici less composants d'une station:
-	 * @param id
-	 * @param nom
-	 * @param ligne
-	 * @param coords
+	 * Une Station est une composante d'une Gare. Elle représente en réalité un ensemble de Quai
+	 * ou passe une unique ligne de métro dans les deux sens de circulation.
+	 * @param id : identifiant unique
+	 * @param ligne : La ligne de la Station
 	 */
 	public Station(int id,int ligne) {
 		this.id = id;
 		this.ligne = ligne;
 	}
 	
+	/**
+	 * Obtenir l'identifiant d'une Station
+	 * @return
+	 */
+	public int getId() {
+		return this.id;
+	}
+	
+	/**
+	 * Obtenir le numéro de ligne
+	 * @return
+	 */
+	public int getLigne() {
+		return this.ligne;
+	}
+	
+	@Override
+	public String toString() {
+		return "{ id:" + this.id + "ligne:" + this.ligne + " }";
+	}
 }
