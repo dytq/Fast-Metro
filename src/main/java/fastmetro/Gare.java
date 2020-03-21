@@ -39,4 +39,11 @@ public class Gare {
 	public String toString() {
 		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() +'\n';
 	}
+	/**
+	 * Récuprer les coordonnées d'une gare
+	 * @return
+	 */
+	public Point getPoint() {
+		return this.point;
+	}
 }

@@ -2,7 +2,10 @@ package gui;
 
 import javax.swing.*;
 
+import fastmetro.Gare;
+
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Fenetre extends JFrame {
 
@@ -13,6 +16,7 @@ public class Fenetre extends JFrame {
 
 	/**
 	 * Le gestionnaire de Fenetre graphique du logiciel
+	 * 
 	 * @param nom de la fenetre
 	 */
 	public Fenetre(String nom) {
@@ -21,27 +25,39 @@ public class Fenetre extends JFrame {
 
 		BoxLayout bl = new BoxLayout(pan, BoxLayout.Y_AXIS);
 		pan.setLayout(bl);
-		pan.setBackground(Color.ORANGE);
+		pan.setBackground(Color.BLACK);
 		setContentPane(pan);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	/**
-	 * Permet d'importer une image (juste on écrit le nom de l'image sur une variable)
+	 * Permet d'importer une image (juste on écrit le nom de l'image sur une
+	 * variable)
+	 * 
 	 * @param chemin du fichier image
 	 */
 	public void importerImage(String chemin) {
 		this.cheminCarte = chemin;
 	}
-	
+
 	/**
-	 * Permet l'ajout d'une station
+	 * Permet l'ajout d'une station :: obsolète
+	 * 
 	 * @param cheminEcriture pour sauvegarder une station
 	 */
 	public void addStation(String cheminEcriture) {
-		StationPanel panel = new StationPanel(cheminCarte, cheminEcriture); // dessine les stations sur la carte
+		StationPanel panel = new StationPanel(cheminCarte); // dessine les stations sur la carte
 		this.add(panel);
-		panel.addMouseListener(new ClickDrawStation(panel,cheminEcriture));
+		// panel.addMouseListener(new ClickDrawStation(panel,cheminEcriture));
+	}
+
+	public void printStation(ArrayList<Gare> gareList) {
+		StationPanel panel = new StationPanel(cheminCarte); // dessine les stations sur la carte
+		this.add(panel);
+		for (Gare gare : gareList) {
+			Circle circle = new Circle(gare.getPoint());
+			panel.addCircle(circle);
+		}
 	}
 }

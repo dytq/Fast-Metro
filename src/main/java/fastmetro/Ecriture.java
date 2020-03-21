@@ -13,6 +13,11 @@ import com.google.gson.GsonBuilder;
 
 import java.lang.System;
 
+/**
+ * Permet d'initialiser une map :: obsolète
+ * @author user
+ *
+ */
 public class Ecriture {
 
 	private String chemin;

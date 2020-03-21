@@ -9,25 +9,35 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * Lecture d'un fichier Json
+ * @author user
+ *
+ */
 public class Lecture {
-
-	//private static ArrayList gareList = new ArrayList<Gare>();
 
 	public Lecture() {
 
 	}
-
-	public void initStation(String chemin) {
+	
+	/**
+	 * Permet lire une Gare 
+	 * @param chemin
+	 * @param gareList
+	 * @return
+	 */
+	public ArrayList<Gare> initStation(String chemin,ArrayList<Gare> gareList) {
 		Reader reader;
+		
 		try {
 			reader = new FileReader(chemin);
 			Type type = new TypeToken<ArrayList<Gare>>(){}.getType();
-			ArrayList<Gare> list = new Gson().fromJson(reader, type);
-			System.out.println(list.toString());
+			gareList = new Gson().fromJson(reader, type);
+			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return gareList;
 	}
 	
 	public void initGare(String chemin) {

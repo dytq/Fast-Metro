@@ -2,16 +2,14 @@ package gui;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.Point;
+
 import javax.swing.JPanel;
 
 public class Circle extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String chemin;
+
 	private int x;
 	private int y;
 
@@ -20,10 +18,10 @@ public class Circle extends JPanel {
 	 * @param x coords
 	 * @param y coords
 	 */
-	public Circle(int x, int y) {
+	public Circle(Point point) {
 		super();
-		this.x = x - 5;
-		this.y = y - 5;
+		this.x = (int) (point.getX() - 5);
+		this.y = (int) (point.getY() - 5);
 	}
 	
 	/**
@@ -31,8 +29,10 @@ public class Circle extends JPanel {
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
 		g.setColor(Color.red);
 		g.fillOval(x, y, 10, 10);
+	}
+	public int getX() {
+		return x;
 	}
 }
