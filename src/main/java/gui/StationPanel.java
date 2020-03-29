@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -36,7 +37,13 @@ public class StationPanel extends JPanel {
 		circles.add(circle);
 		this.repaint();
 	}
-
+	public void setCircle(Color color) {
+		for(int i =0 ; i < 50 ;i++)
+		{
+			circles.get(i).setColor(color);
+		}
+		this.repaint();
+	}
 	/**
 	 * Dessiner un cercle et une image J'ai les mis dans une meme buffered vu qu'on
 	 * dessine une station sur une map

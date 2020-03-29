@@ -12,6 +12,9 @@ public class Circle extends JPanel {
 
 	private int x;
 	private int y;
+	
+	/* Couleur par défaut rouge */
+	Color color;
 
 	/**
 	 * Cercle 
@@ -22,17 +25,19 @@ public class Circle extends JPanel {
 		super();
 		this.x = (int) (point.getX() - 5);
 		this.y = (int) (point.getY() - 5);
+		this.color = Color.red;
 	}
 	
 	/**
-	 * Caracteristique d'un cercle 
+	 * Caracteristique un cercle 
 	 * @param g
 	 */
 	public void draw(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(color);
 		g.fillOval(x, y, 10, 10);
 	}
-	public int getX() {
-		return x;
+	
+	public void setColor(Color color) {
+		this.color = color;
 	}
 }

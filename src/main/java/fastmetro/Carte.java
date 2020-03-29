@@ -20,32 +20,25 @@ public class Carte {
 	/* Titre de l'interface */
 	private String nom;
 	
-	/* Chemin de la carte dans /image */ 
-	private String chemin;
+	/* chemin de la carte */
+	private String cheminCarte;
 	
 	/**
 	 * Initialise l'objet Carte
 	 * @param nom du titre de la fenetre
 	 */
-	public Carte(String nom) {
+	public Carte(String nom,String cheminCarte) {
 		this.nom = nom;
+		this.cheminCarte = cheminCarte;
 	}
 
 	/**
-	 * Import une carte
+	 * Permet d'écrire les stations : obsolète
 	 * @param chemin
 	 */
-	public void importCarte(String chemin) {
-		this.chemin = chemin;
-	}
-
-	/**
-	 * Permet d'écrire les stations
-	 * @param chemin
-	 */
-	public void drawStation(String chemin) {
-		fenetre.addStation(chemin);
-	}
+	//public void drawStation(String chemin) {
+		//fenetre.addStation(chemin);
+	//}
 	
 	/**
 	 * Importe des stations
@@ -60,8 +53,7 @@ public class Carte {
 	 * Importe une image est affiche les Stations
 	 */
 	public void initStationCarte() {
-		this.fenetre = new Fenetre(nom);
-		fenetre.importerImage(this.chemin);
+		this.fenetre = new Fenetre(nom,cheminCarte);
 		fenetre.printStation(gareList);
 	}
 	
@@ -70,7 +62,7 @@ public class Carte {
 	}
 	
 	public void cherchePlusCourtChemin() {
-		/* Créer une classe pour la recherche du plus court chemin */ 
+		fenetre.selectStation(this);
 	}
 
 	/**

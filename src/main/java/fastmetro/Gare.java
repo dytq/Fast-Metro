@@ -4,16 +4,16 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class Gare {
-	
+
 	/* Nom de la Gare */
 	private String nom;
-	
+
 	/* Point sur la Carte */
 	private Point point;
-	
+
 	/* Liste de Stations */
 	private ArrayList<Station> stationGare = new ArrayList<Station>();
-	
+
 	/**
 	 * Une Gare est un ensemble de Stations.
 	 * Elle contient ainsi un nom et des coordonnées 2D.
@@ -26,9 +26,10 @@ public class Gare {
 		this.nom = nom;
 		this.point = point;
 	}
-	
+
 	/**
 	 * Ajout d'une Station dans la Gare
+	 * 
 	 * @param station
 	 */
 	public void addStation(Station station) {
@@ -37,10 +38,12 @@ public class Gare {
 	
 	@Override
 	public String toString() {
-		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() +'\n';
+		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() + '\n';
 	}
+
 	/**
 	 * Récuprer les coordonnées d'une gare
+	 * 
 	 * @return
 	 */
 	public Point getPoint() {

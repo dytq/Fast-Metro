@@ -10,8 +10,8 @@ import fastmetro.Ecriture;
 public class ClickDrawStation implements MouseListener {
 	private StationPanel panel;
 	private String cheminEcriture;
-	
-	public ClickDrawStation(StationPanel panel,String cheminEcriture) {
+
+	public ClickDrawStation(StationPanel panel, String cheminEcriture) {
 		super();
 		this.panel = panel;
 		this.cheminEcriture = cheminEcriture;
