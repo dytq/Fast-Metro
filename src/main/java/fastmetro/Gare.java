@@ -27,6 +27,11 @@ public class Gare {
 		this.point = point;
 	}
 
+	public Gare(Gare gare) {
+		this.nom = gare.getNom();
+		this.point = gare.getPoint();
+	}
+
 	/**
 	 * Ajout d'une Station dans la Gare
 	 * 
@@ -42,11 +47,19 @@ public class Gare {
 	}
 
 	/**
-	 * Récuprer les coordonnées d'une gare
+	 * Récuperer les coordonnées d'une gare
 	 * 
 	 * @return
 	 */
 	public Point getPoint() {
 		return this.point;
+	}
+	
+	public String getNom() {
+		return this.nom;
+	}
+	
+	public ArrayList<Station> getStationGare() {
+		return stationGare;
 	}
 }

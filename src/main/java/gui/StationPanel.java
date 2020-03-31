@@ -37,11 +37,9 @@ public class StationPanel extends JPanel {
 		circles.add(circle);
 		this.repaint();
 	}
-	public void setCircle(Color color) {
-		for(int i =0 ; i < 50 ;i++)
-		{
-			circles.get(i).setColor(color);
-		}
+	
+	public void setCircleColor(Color color,int id) {
+		circles.get(id).setColor(color);
 		this.repaint();
 	}
 	/**

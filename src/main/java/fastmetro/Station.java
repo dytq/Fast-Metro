@@ -19,6 +19,11 @@ public class Station {
 		this.ligne = ligne;
 	}
 	
+	public Station(Station station) {
+		this.id = station.id;
+		this.ligne = station.ligne;
+	}
+
 	/**
 	 * Obtenir l'identifiant d'une Station
 	 * @return

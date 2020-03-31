@@ -1,36 +1,51 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Date;
+
+import javax.swing.Timer;
 
 import fastmetro.Carte;
 import fastmetro.Dijkstra;
-import fastmetro.Station;
 
 public class ClickSelectStation implements MouseListener {
-	
+
 	private Carte carte;
 	private StationPanel panel;
-	
-	public ClickSelectStation(StationPanel panel,Carte carte) {
+	private Dijkstra dijkstra;
+	private int click;
+
+	public ClickSelectStation(StationPanel panel, Carte carte, Dijkstra dijkstra) {
 		super();
 		this.panel = panel;
 		this.carte = carte;
+		this.dijkstra = dijkstra;
+		this.click = 1;
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
-		System.out.println(event.toString());
-		panel.setCircle(Color.yellow);
-		// On regarde les id stations selectionner 
-		// On initilise l'objet dijsktra
-		Dijkstra dijsktra = new Dijkstra(new Station(5,1),new Station(6,3),carte);
-		// On initialise une liste de chemin en recherchant le plus court chemin
-		// listStation = dijsktra.plusCourtChemin(); 
-		// On affiche en jaune avec la liste de stations
-		// On attend qql seconde 
-		// avec la liste on recolorie en rouge 
+		if (!dijkstra.aDeuxGaresValider()) {
+			Point point = new Point(event.getX(), event.getY());
+			int gareid;
+			gareid = carte.chercheGare(point);
+			if (gareid != -1) {
+				this.dijkstra.addGareId(gareid);
+				panel.setCircleColor(Color.yellow, gareid);
+			}
+		} else {
+			click = 1 - click;
+			if (click == 0) {
+				// On initialise une liste de chemin en recherchant le plus court chemin
+				// listStation = dijsktra.plusCourtChemin();
+				// On affiche en jaune avec la liste de stations
+			} else {
+				// avec la liste on recolorie en rouge
+			}
+		}
 	}
 
 	@Override
