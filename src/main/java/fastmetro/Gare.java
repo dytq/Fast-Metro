@@ -3,6 +3,12 @@ package fastmetro;
 import java.awt.Point;
 import java.util.ArrayList;
 
+/**
+ * Une gare est un ensemble de stations. Un ensemble non structurellement liée, car une gare n'a pas d'information
+ * en commun avec une station.
+ * @author dedarally taariq
+ *
+ */
 public class Gare {
 
 	/* Nom de la Gare */
@@ -49,16 +55,23 @@ public class Gare {
 	/**
 	 * Récuperer les coordonnées d'une gare
 	 * 
-	 * @return
+	 * @return coords sur la map
 	 */
 	public Point getPoint() {
 		return this.point;
 	}
-	
+	/**
+	 * Nom de la station
+	 * @return nom de la station
+	 */
 	public String getNom() {
 		return this.nom;
 	}
 	
+	/**
+	 * Liste des stations 
+	 * @return la liste des stations
+	 */
 	public ArrayList<Station> getStationGare() {
 		return stationGare;
 	}

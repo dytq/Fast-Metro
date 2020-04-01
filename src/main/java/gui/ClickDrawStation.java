@@ -7,6 +7,11 @@ import java.io.IOException;
 
 import fastmetro.Ecriture;
 
+/**
+ * Classe obsolète. permettait d'ecrire une station lors du click
+ * @author user
+ *
+ */
 public class ClickDrawStation implements MouseListener {
 	private StationPanel panel;
 	private String cheminEcriture;

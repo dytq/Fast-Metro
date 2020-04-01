@@ -1,7 +1,5 @@
 package fastmetro;
 
-import java.util.concurrent.TimeUnit;
-
 public class Dijkstra {
 
 	/* Premier cercle selectionner */

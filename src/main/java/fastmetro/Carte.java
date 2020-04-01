@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import gui.Fenetre;
 
 /**
- * La Carte de l'application
+ * La Carte de l'application.
  * 
- * @author user
+ * @author dedarally taariq
  *
  */
 public class Carte {
@@ -25,12 +25,14 @@ public class Carte {
 	/* chemin de la carte */
 	private String cheminCarte;
 	
+	/* Initialise l'objet Dijkstra */ 
 	private Dijkstra dijkstra= new Dijkstra(this);
 	
 	/**
 	 * Initialise l'objet Carte
 	 * 
 	 * @param nom du titre de la fenetre
+	 * @param cheminCarte c'est la carte qu'on souhaite importer
 	 */
 	public Carte(String nom, String cheminCarte) {
 		this.nom = nom;
@@ -57,7 +59,7 @@ public class Carte {
 	}
 
 	/**
-	 * Importe une image est affiche les Stations
+	 * Importe une image et affiche les Stations
 	 */
 	public void initStationCarte() {
 		this.fenetre = new Fenetre(nom, cheminCarte);
@@ -68,6 +70,9 @@ public class Carte {
 
 	}
 
+	/**
+	 * Dans la selection des stations on recherche le plus court chemin
+	 */
 	public void cherchePlusCourtChemin() {
 		fenetre.selectStation(this,dijkstra);
 	}
@@ -90,7 +95,12 @@ public class Carte {
 	public void setGareList(ArrayList<Gare> gareList) {
 		this.gareList = gareList;
 	}
-
+	
+	/**
+	 * Recherche la gare à partie des coordonnées dans la liste Gare
+	 * @param point la gare clické.
+	 * @return id de la gare pour la colorier sur la carte comme étant séléctionner par l'utilisateur
+	 */
 	public int chercheGare(Point point) {
 		int cmp = 0;
 		for (Gare gare : gareList) {

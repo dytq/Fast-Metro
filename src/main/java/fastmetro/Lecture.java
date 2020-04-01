@@ -11,20 +11,16 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * Lecture d'un fichier Json
- * @author user
+ * @author dedarally taariq
  *
  */
 public class Lecture {
-
-	public Lecture() {
-
-	}
 	
 	/**
 	 * Permet lire une Gare 
-	 * @param chemin
-	 * @param gareList
-	 * @return
+	 * @param chemin d'accés disque
+	 * @param gareList on ne peut pas initialiser l'objet gare dans lecture. 
+	 * @return la liste des gares lu dans le fichier
 	 */
 	public ArrayList<Gare> initStation(String chemin,ArrayList<Gare> gareList) {
 		Reader reader;

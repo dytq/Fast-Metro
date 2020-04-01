@@ -4,18 +4,22 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Date;
-
-import javax.swing.Timer;
 
 import fastmetro.Carte;
 import fastmetro.Dijkstra;
 
 public class ClickSelectStation implements MouseListener {
 
+	/* Carte pour trouver les gares */
 	private Carte carte;
+	
+	/* Panel pour afficher les modifications causé par le click */
 	private StationPanel panel;
+	
+	/* Pour determiner le plus court chemin */
 	private Dijkstra dijkstra;
+	
+	/* Pour obtenir le nombre de clics */
 	private int click;
 
 	public ClickSelectStation(StationPanel panel, Carte carte, Dijkstra dijkstra) {
@@ -38,7 +42,7 @@ public class ClickSelectStation implements MouseListener {
 			}
 		} else {
 			click = 1 - click;
-			if (click == 0) {
+			if (click == 1) {
 				// On initialise une liste de chemin en recherchant le plus court chemin
 				// listStation = dijsktra.plusCourtChemin();
 				// On affiche en jaune avec la liste de stations
@@ -56,11 +60,10 @@ public class ClickSelectStation implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void mousePressed(MouseEvent event) {
+	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 	}
 

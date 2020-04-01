@@ -1,26 +1,42 @@
 package fastmetro;
 
+/**
+ * Fast-Metro 
+ * 
+ * Principe: Code principal, il s'agit juste de faire appelle à des
+ * modules de la carte. 
+ * 
+ * Possiblité: On peut changer de carte, mais il faut
+ * initialisé le graphe et les stations. Il est possible d'initialisé les
+ * stations via la méthode drawstation mais en revanche, on ne peut pas
+ * initialisé un graphe (a coder ce n'est pas difficile, et en plus on a pas
+ * besoin d'afficher la fenêtre graphique)
+ * 
+ * @author dedarallu taariq
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		/* Initialise une Carte */
-		Carte metroParisien = new Carte("Metro Parisien","image/paris.gif");
-		
+		Carte metroParisien = new Carte("Metro Parisien", "image/paris.gif");
+
 		/* Importe les Stations d'un fichier */
 		metroParisien.importStations("data/parisStation.json");
-		
-		//metroParisien.importGraphe("data/parisGraphe.json");
-		
+
+		/* Importe le graphe */
+		// metroParisien.importGraphe("data/parisGraphe.json");
+
 		/* Initialise la Carte dans l'interface graphique */
 		metroParisien.initStationCarte();
-		
+
 		/* On selectionne deux stations et on affiche le plus court chemin */
 		metroParisien.cherchePlusCourtChemin();
-		
-		// obsolète
-		//metroParisien.drawStation("data/parisStation.json"); 		
-		//metroParisien.ecrireGraphe("data/parisGraphe.json"); 
+
+		// obsolète : écrire station et écrire graphe
+		// metroParisien.drawStation("data/parisStation.json");
+		// metroParisien.ecrireGraphe("data/parisGraphe.json");
 	}
 
 }

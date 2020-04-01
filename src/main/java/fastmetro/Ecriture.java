@@ -15,7 +15,7 @@ import java.lang.System;
 
 /**
  * Permet d'initialiser une map :: obsolète
- * @author user
+ * @author dedarally taariq
  *
  */
 public class Ecriture {

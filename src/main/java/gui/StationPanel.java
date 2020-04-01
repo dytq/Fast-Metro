@@ -8,6 +8,12 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import javax.swing.JPanel;
 
+/**
+ * Panel de la carte, pour afficher la carte et les stations ainsi que les modifications.
+ * 
+ * @author dedarally taariq
+ *
+ */
 public class StationPanel extends JPanel {
 
 	private static final long serialVersionUID = -752649660103581438L;
@@ -38,6 +44,11 @@ public class StationPanel extends JPanel {
 		this.repaint();
 	}
 	
+	/**
+	 * Change couleur station 
+	 * @param color
+	 * @param id
+	 */
 	public void setCircleColor(Color color,int id) {
 		circles.get(id).setColor(color);
 		this.repaint();

@@ -8,7 +8,6 @@ import fastmetro.Gare;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Fenetre extends JFrame {
 
@@ -57,6 +56,12 @@ public class Fenetre extends JFrame {
 		}
 	}
 
+	/**
+	 * Le comportement de cette fonction, est appelé de mettre sous écoute la souris. Celle-ci est tourné en 
+	 * boucle dans le panel et elle réagit que lorsqu'il y a un clique 
+	 * @param carte
+	 * @param dijkstra
+	 */
 	public void selectStation(Carte carte, Dijkstra dijkstra) {
 		panel.addMouseListener(new ClickSelectStation(panel, carte, dijkstra));
 	}
