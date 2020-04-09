@@ -32,7 +32,11 @@ public class Lecture {
 			Type type = new TypeToken<ArrayList<Gare>>() {
 			}.getType();
 			gareList = new Gson().fromJson(reader, type);
-
+			int i = 0;
+			for (Gare gare : gareList) {
+				gare.setGareId(i);
+				i++;
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -1,16 +1,15 @@
 # Fast-Metro
 
 ## Présentation du logiciel
-Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux stations de métro. Ce logiciel utilise la puissance de Java(Langage de programmation orienté objet),de Jframe(bibliothèque graphique native de Java) , Maven(pour les dépendances) et du standard Json, librairie Gson (lire et écrire sur un fichier) pour faciliter les transferts de données.
+Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux stations de métro. Ce logiciel utilise la puissance de Java, de Jframe (bibliothèque graphique native de Java), Maven (pour les dépendances) et du standard Json, librairie Gson (lire et écrire sur un fichier) pour faciliter les transferts de données.
 
-# Releases
-## Execution
-java -jar fastmetro.jar
+# Execution
+java -jar releases/app/\*.jar
 
-## Mode d'Emploi
-On selectionnne les deux stations qu'on souhaite voir le plus court chemin et le logiciel se charge de l'afficher.
+# Mode d'Emploi
+On selectionnne les deux stations qu'on souhaite voir le plus court chemin. On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
 
-## Explication de la structure du projet
+# Explication de la structure du projet
 Voici un résumer de la structure du projet:
 
 1) fastmetro package: contient la classe main et les classes de structures de données
@@ -22,9 +21,29 @@ Voici un résumer de la structure du projet:
 	f) Dijkstra: Implémentation de l'algo et utilisation d'un tableau pour faire les opérations.
 	g) Ecriture.class(non utilisé): Pour écrire sur un json(initialisé des stations sur une nouvelle carte et faire un nouveau graphe)
 
-2) GUI package: pour l'interface graphique utilisateur (voir dans la javadoc dans Documentation/index.html avec un navigateur pour plus de detail) Mais en gros, on a une fenetre, un panel(station pannel) pour dessiner les stations(changer les couleurs etc...) et circle qui représente un cercle utiliser pour l'affichage des stations. 
+2) GUI package: pour l'interface graphique utilisateur (voir dans la javadoc dans Documentation/index.html avec un navigateur pour plus de detail). Mais en gros, on a une fenetre, un panel(station pannel) pour dessiner les stations(changer les couleurs etc...) et circle qui représente un cercle utiliser pour l'affichage des stations. 
 
-## Algorithme du plus court chemin Dijkstra
+# Algorithme du plus court chemin: Dijkstra
+
+## Structure de données
+On a deux tableaux:
+
+- Matrice de Dijkstra Dynamic, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le cumul du temps, le père\>
+- Liste dynamic des stations coloriés. Quand une station est colorié on la supprime de la liste.
+
+## Dérouler de l'algorithme
+Voici l'algo adapter pour le programme:
+
+- On initialise la première ligne de matrice (+inf est 2 à la puissance 31, c'est la valeur max d'un int).
+- On boucle tant que le tableau des stations coloriés n'est pas vide.
+- On copie la première ligne à la deuxième.
+- On cherche tous les voisins de la première station.
+- Pour chaque voisin on vérifie si elle inferieur à celle entrée. Et on écrase la valeur.
+- Puis on cherche les pères successif du tableau de la dernière ligne.
+
+# Détail de l'utilisation de l'interface graphique
+## clic
+Le clic est mis en écoute. Quand on clic on fait appel à l'objet dijkstra initialisé dans la carte. Les tableaux sont temporaires et change à chaque itérations.
 
 # Contenu
 ## Cartes

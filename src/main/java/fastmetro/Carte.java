@@ -28,6 +28,9 @@ public class Carte {
 	/* Initialise l'objet Dijkstra */
 	private Dijkstra dijkstra = new Dijkstra(this);
 
+	/* toutes les stations */
+	private ArrayList<Station> stationList = new ArrayList<Station>();
+
 	/* Graphe */
 
 	/**
@@ -58,6 +61,7 @@ public class Carte {
 	public void importStations(String chemin) {
 		Lecture lecture = new Lecture();
 		setGareList(lecture.initStation(chemin, getGareList()));
+		setStationList();
 	}
 
 	/**
@@ -105,14 +109,23 @@ public class Carte {
 	 * @return id de la gare pour la colorier sur la carte comme étant séléctionner
 	 *         par l'utilisateur
 	 */
-	public int chercheGare(Point point) {
-		int cmp = 0;
+	public Gare chercheGare(Point point) {
 		for (Gare gare : gareList) {
 			if (gare.getPoint().distance(point) < 10) {
-				return cmp;
+				return gare;
 			}
-			cmp++;
 		}
-		return -1;
+		return null;
+	}
+
+	public void setStationList() {
+		ArrayList<Station> stationList = new ArrayList<Station>();
+		for (Gare gare : gareList) {
+			stationList.addAll(gare.getStationGare());
+		}
+	}
+
+	public ArrayList<Station> getStationList() {
+		return stationList;
 	}
 }

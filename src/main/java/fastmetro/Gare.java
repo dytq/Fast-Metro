@@ -4,8 +4,9 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- * Une gare est un ensemble de stations. Un ensemble non structurellement liée, car une gare n'a pas d'information
- * en commun avec une station.
+ * Une gare est un ensemble de stations. Un ensemble non structurellement liée,
+ * car une gare n'a pas d'information en commun avec une station.
+ * 
  * @author dedarally taariq
  *
  */
@@ -20,15 +21,17 @@ public class Gare {
 	/* Liste de Stations */
 	private ArrayList<Station> stationGare = new ArrayList<Station>();
 
+	private int gareid;
+
 	/**
-	 * Une Gare est un ensemble de Stations.
-	 * Elle contient ainsi un nom et des coordonnées 2D.
-	 * Les Stations sont sauvegardées sous forme de liste.
-	 * Une Gare peut évidement contenir une seule station
-	 * @param nom de la gare
+	 * Une Gare est un ensemble de Stations. Elle contient ainsi un nom et des
+	 * coordonnées 2D. Les Stations sont sauvegardées sous forme de liste. Une Gare
+	 * peut évidement contenir une seule station
+	 * 
+	 * @param nom   de la gare
 	 * @param point sur la map (2D)
 	 */
-	Gare(String nom,Point point) {
+	Gare(String nom, Point point) {
 		this.nom = nom;
 		this.point = point;
 	}
@@ -36,6 +39,10 @@ public class Gare {
 	public Gare(Gare gare) {
 		this.nom = gare.getNom();
 		this.point = gare.getPoint();
+		this.gareid = gare.getGareId();
+	}
+
+	public Gare() {
 	}
 
 	/**
@@ -46,10 +53,10 @@ public class Gare {
 	public void addStation(Station station) {
 		stationGare.add(station);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() + '\n';
+		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() + "+ id:" + this.gareid + '\n';
 	}
 
 	/**
@@ -60,19 +67,34 @@ public class Gare {
 	public Point getPoint() {
 		return this.point;
 	}
+
 	/**
 	 * Nom de la station
+	 * 
 	 * @return nom de la station
 	 */
 	public String getNom() {
 		return this.nom;
 	}
-	
+
 	/**
-	 * Liste des stations 
+	 * Liste des stations
+	 * 
 	 * @return la liste des stations
 	 */
 	public ArrayList<Station> getStationGare() {
 		return stationGare;
+	}
+
+	public int getNbrStations() {
+		return this.stationGare.size();
+	}
+
+	public void setGareId(int i) {
+		this.gareid = i;
+	}
+
+	public int getGareId() {
+		return this.gareid;
 	}
 }
