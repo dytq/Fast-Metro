@@ -17,12 +17,17 @@ package fastmetro;
  */
 public class Main {
 
+	/**
+	 * Fonction principal
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		/* Initialise une Carte */
 		Carte metroParisien = new Carte("Metro Parisien", "image/paris.gif");
-		int a = (int) ((Math.pow(2, 31)));
-		System.out.print(a);
+		// int a = (int) ((Math.pow(2, 31)));
+		// System.out.print(a);
 		/* Importe les Stations d'un fichier */
 		metroParisien.importStations("data/parisStation.json");
 

@@ -7,7 +7,7 @@ Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux
 java -jar releases/app/\*.jar
 
 # Mode d'Emploi
-On selectionnne les deux stations qu'on souhaite voir le plus court chemin. On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
+On selectionnne les deux stations qu'on souhaite voir le plus court chemin. Si on est dans une gare traversée par plusieurs stations, on entre la ligne souhaité (en chiffre). On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
 
 # Explication de la structure du projet
 Voici un résumer de la structure du projet:
@@ -15,7 +15,7 @@ Voici un résumer de la structure du projet:
 1) fastmetro package: contient la classe main et les classes de structures de données
 	a) Main.class: class principal.
 	b) Carte.class: Tous ce qui concerne la carte.
-	c) Station.class: Tous ce qui concerne une station (numéro de la stations,ligne). Un station est traversée par une ligne dans les deux sens de circulations.
+	c) Station.class: Tous ce qui concerne une station (numéro de la stations,ligne). Un station est traversée par une ligne dans les deux sens de circulations. Elle hérite d'une gare pour pouvoir obtenir l'identifiant de la gare dont laquelle est affecté.
 	d) Gare.class: Une gare est un ensemble de stations. Elle contient un nom et une liste de stations.
 	e) Lecture.class: Pour lire un json.
 	f) Dijkstra: Implémentation de l'algo et utilisation d'un tableau pour faire les opérations.
@@ -29,7 +29,7 @@ Voici un résumer de la structure du projet:
 On a deux tableaux:
 
 - Matrice de Dijkstra Dynamic, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le cumul du temps, le père\>
-- Liste dynamic des stations coloriés. Quand une station est colorié on la supprime de la liste.
+- Liste dynamique des stations coloriés. Quand une station est colorié on la supprime de la liste.
 
 ## Dérouler de l'algorithme
 Voici l'algo adapter pour le programme:

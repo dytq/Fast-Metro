@@ -35,6 +35,9 @@ public class Lecture {
 			int i = 0;
 			for (Gare gare : gareList) {
 				gare.setGareId(i);
+				for (Station station : gare.getStationGare()) {
+					station.setGareId(gare.getGareId());
+				}
 				i++;
 			}
 		} catch (FileNotFoundException e) {

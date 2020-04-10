@@ -86,6 +86,10 @@ public class Gare {
 		return stationGare;
 	}
 
+	/**
+	 * Récupère la taille de la liste des stations pour une gare
+	 * @return le nombre de quai dans une gare
+	 */
 	public int getNbrStations() {
 		return this.stationGare.size();
 	}

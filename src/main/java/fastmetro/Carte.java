@@ -118,13 +118,19 @@ public class Carte {
 		return null;
 	}
 
+	/**
+	 * Permet d'initialiser toutes les stations pour l'utiliser dans la white liste dans dijsktra
+	 */
 	public void setStationList() {
-		ArrayList<Station> stationList = new ArrayList<Station>();
 		for (Gare gare : gareList) {
-			stationList.addAll(gare.getStationGare());
+			stationList = gare.getStationGare();
 		}
 	}
 
+	/**
+	 * Recupère la liste des stations
+	 * @return
+	 */
 	public ArrayList<Station> getStationList() {
 		return stationList;
 	}

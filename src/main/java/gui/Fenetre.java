@@ -57,8 +57,10 @@ public class Fenetre extends JFrame {
 	}
 
 	/**
-	 * Le comportement de cette fonction, est appelé de mettre sous écoute la souris. Celle-ci est tourné en 
-	 * boucle dans le panel et elle réagit que lorsqu'il y a un clique 
+	 * Le comportement de cette fonction, est appelé de mettre sous écoute la
+	 * souris. Celle-ci est tourné en boucle dans le panel et elle réagit que
+	 * lorsqu'il y a un clique
+	 * 
 	 * @param carte
 	 * @param dijkstra
 	 */

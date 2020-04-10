@@ -9,6 +9,7 @@ import fastmetro.Ecriture;
 
 /**
  * Classe obsolète. permettait d'ecrire une station lors du click
+ * 
  * @author user
  *
  */
@@ -21,7 +22,7 @@ public class ClickDrawStation implements MouseListener {
 		this.panel = panel;
 		this.cheminEcriture = cheminEcriture;
 	}
-	
+
 	/**
 	 * Quand on clique on ajoute un cercle
 	 */
@@ -30,7 +31,7 @@ public class ClickDrawStation implements MouseListener {
 		Ecriture e = new Ecriture(cheminEcriture);
 		Point point2 = new Point(event.getX(), event.getY());
 		panel.addCircle(new Circle(point2));
-		Point point = new Point(event.getX(),event.getY());
+		Point point = new Point(event.getX(), event.getY());
 		try {
 			e.scanPrompt(point);
 		} catch (IOException e1) {

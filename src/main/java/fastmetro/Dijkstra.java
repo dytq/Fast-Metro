@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Ensemble des algorithmes permettant l'utilisation de dijkstra
+ * @author dedarally taariq
+ *
+ */
 public class Dijkstra {
 
 	/* Premier cercle selectionner */
@@ -19,8 +24,10 @@ public class Dijkstra {
 	/* si c'est la station de départ */
 	int isStationDepart;
 
+	/* Pour selectionner une ligne */
 	private Scanner prompt = new Scanner(System.in);
 
+	/* Carte pour récuperer des données concernant la carte et faire les algorithmes */
 	Carte carte;
 
 	/**
@@ -35,12 +42,17 @@ public class Dijkstra {
 		this.isStationDepart = 1;
 	}
 
+	/**
+	 * Permet d'ajouter les stations de départ et d'arrivée en local pour pouvoir les initialisé dans
+	 *  la matrice de dijkstra et de retrouver le chemin en partant de la station d'arrivée.
+	 * @param id
+	 */
 	public void addGareId(int id) {
 		ArrayList<Station> stationsGare = new ArrayList<Station>();
 		stationsGare = carte.getGareList().get(id).getStationGare();
-
+	
 		Station station = new Station(getQuai(stationsGare, id));
-
+		station.setGareId(id);
 		this.isStationDepart = 1 - this.isStationDepart;
 
 		if (isStationDepart == 0) {
@@ -53,6 +65,12 @@ public class Dijkstra {
 
 	}
 
+	/**
+	 * Permet simplement de récuperer la selection de la ligne entrée par l'utiilisateur
+	 * @param stationsGare
+	 * @param id
+	 * @return
+	 */
 	private Station getQuai(ArrayList<Station> stationsGare, int id) {
 		int ligne = -1;
 		if (stationsGare.size() > 1) {
@@ -65,7 +83,6 @@ public class Dijkstra {
 					ligne = Integer.parseInt(ligneEntree);
 				} catch (Exception e) {
 					System.out.println("RTFM: Oh la la, on demande en chiffre pas lettre !!!");
-					System.out.println("Avoue, c'était pour tester ;)");
 				}
 
 			} while (!(ligneEntreeValide(stationsGare, ligne)) || ligne == -1); // si il y a une erreur d'entrée avec le
@@ -83,7 +100,7 @@ public class Dijkstra {
 	}
 
 	/**
-	 * Bon c'est pas très propre il faut changer cette fonction en toString
+	 * Affiche la liste des lignes disponible pour une station
 	 * 
 	 * @param stationsGare
 	 */
@@ -93,6 +110,12 @@ public class Dijkstra {
 		}
 	}
 
+	/**
+	 * Regarde si l'utilisateur a selectionner un numéro de ligne valide
+	 * @param stationsGare
+	 * @param ligne
+	 * @return
+	 */
 	private boolean ligneEntreeValide(ArrayList<Station> stationsGare, int ligne) {
 		for (Station station : stationsGare) {
 			if (station.getLigne() == ligne) {
@@ -104,6 +127,10 @@ public class Dijkstra {
 		return false;
 	}
 
+	/**
+	 * Juste pour vérifier si l'utilisateur à cliquer sur deux gares valides
+	 * @return 
+	 */
 	public boolean aDeuxGaresValider() {
 		if (nbrStation >= 2) {
 			this.nbrStation = 0;
@@ -112,6 +139,10 @@ public class Dijkstra {
 		return false;
 	}
 
+	/**
+	 * Permet de calculer le plus court chemin 
+	 * @return
+	 */
 	public ArrayList<Station> calculPlusCourtChemin() {
 		/* liste des station dans la white liste (ceux qui ne sont pas coloriés) */
 		ArrayList<Station> stationListTmp = new ArrayList<Station>();
@@ -132,10 +163,19 @@ public class Dijkstra {
 		return retrouveChemin(matriceDijkstra);
 	}
 
+	/**
+	 * Initialise la white Liste, récupère toutes les stations
+	 * @return
+	 */
 	private ArrayList<Station> initWhiteList() {
 		return carte.getStationList();
 	}
 
+	/**
+	 * Permet de retrouver par monté successif les stations pères, pour les afficher.
+	 * @param matriceDijkstra
+	 * @return
+	 */
 	private ArrayList<Station> retrouveChemin(ArrayList<Map<Station, Date>> matriceDijkstra) {
 		ArrayList<Station> stationListRes = new ArrayList<Station>();
 		stationListRes.add(stationDepart);

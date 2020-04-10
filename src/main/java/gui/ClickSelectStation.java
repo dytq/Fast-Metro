@@ -25,6 +25,13 @@ public class ClickSelectStation implements MouseListener {
 	/* Pour obtenir le nombre de clics */
 	private int click;
 
+	/**
+	 * Initialise les composants necessaires quand on clique
+	 * 
+	 * @param panel
+	 * @param carte
+	 * @param dijkstra
+	 */
 	public ClickSelectStation(StationPanel panel, Carte carte, Dijkstra dijkstra) {
 		super();
 		this.panel = panel;
@@ -35,6 +42,14 @@ public class ClickSelectStation implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent event) {
+		if (click == 0) {
+			ArrayList<Station> listStations = new ArrayList<Station>();
+			listStations.addAll(this.dijkstra.calculPlusCourtChemin());
+			for (Station station : listStations) {
+				panel.setCircleColor(Color.red, station.getGareId());
+			}
+			click = 1 - click;
+		}
 		if (!dijkstra.aDeuxGaresValider()) {
 			Point point = new Point(event.getX(), event.getY());
 			try { /* si le clique est en dehors */
@@ -48,12 +63,9 @@ public class ClickSelectStation implements MouseListener {
 			if (click == 0) {
 				ArrayList<Station> listStations = new ArrayList<Station>();
 				listStations.addAll(this.dijkstra.calculPlusCourtChemin());
-				System.out.println(listStations.toString());
 				for (Station station : listStations) {
 					panel.setCircleColor(Color.black, station.getGareId());
 				}
-			} else {
-				// avec la liste on recolorie en rouge
 			}
 		}
 	}

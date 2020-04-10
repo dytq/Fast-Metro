@@ -9,7 +9,8 @@ import java.util.LinkedList;
 import javax.swing.JPanel;
 
 /**
- * Panel de la carte, pour afficher la carte et les stations ainsi que les modifications.
+ * Panel de la carte, pour afficher la carte et les stations ainsi que les
+ * modifications.
  * 
  * @author dedarally taariq
  *
@@ -43,16 +44,18 @@ public class StationPanel extends JPanel {
 		circles.add(circle);
 		this.repaint();
 	}
-	
+
 	/**
-	 * Change couleur station 
+	 * Change couleur station
+	 * 
 	 * @param color
 	 * @param id
 	 */
-	public void setCircleColor(Color color,int id) {
+	public void setCircleColor(Color color, int id) {
 		circles.get(id).setColor(color);
 		this.repaint();
 	}
+
 	/**
 	 * Dessiner un cercle et une image J'ai les mis dans une meme buffered vu qu'on
 	 * dessine une station sur une map
@@ -65,6 +68,7 @@ public class StationPanel extends JPanel {
 
 	/**
 	 * Buffer pour afficher l'image
+	 * 
 	 * @return img
 	 */
 	private Image bufferedImage() {
@@ -73,7 +77,7 @@ public class StationPanel extends JPanel {
 		super.paintComponent(g);
 		Image img = Toolkit.getDefaultToolkit().getImage(cheminCarte);
 		g.drawImage(img, 0, 0, this);
-        
+
 		try {
 			for (Circle c : circles) {
 				c.draw(g);

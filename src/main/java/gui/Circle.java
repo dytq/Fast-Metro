@@ -10,14 +10,16 @@ public class Circle extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	/* Coordonnées */
 	private int x;
 	private int y;
-	
+
 	/* Couleur par défaut rouge */
 	Color color;
 
 	/**
-	 * Cercle 
+	 * Cercle
+	 * 
 	 * @param x coords
 	 * @param y coords
 	 */
@@ -27,16 +29,22 @@ public class Circle extends JPanel {
 		this.y = (int) (point.getY() - 5);
 		this.color = Color.red;
 	}
-	
+
 	/**
-	 * Caracteristique un cercle 
+	 * Caracteristique un cercle
+	 * 
 	 * @param g
 	 */
 	public void draw(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, 10, 10);
 	}
-	
+
+	/**
+	 * Permet d'affecter une couleur à un cercle
+	 * 
+	 * @param color
+	 */
 	public void setColor(Color color) {
 		this.color = color;
 	}
