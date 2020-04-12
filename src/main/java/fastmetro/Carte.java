@@ -31,7 +31,8 @@ public class Carte {
 	/* toutes les stations */
 	private ArrayList<Station> stationList = new ArrayList<Station>();
 
-	/* Graphe */
+	/* Lecture de données */
+	private Lecture lecture = new Lecture();
 
 	/**
 	 * Initialise l'objet Carte
@@ -59,7 +60,6 @@ public class Carte {
 	 * @param chemin
 	 */
 	public void importStations(String chemin) {
-		Lecture lecture = new Lecture();
 		setGareList(lecture.initStation(chemin, getGareList()));
 		setStationList();
 	}
@@ -73,7 +73,7 @@ public class Carte {
 	}
 
 	public void importGraphe(String chemin) {
-
+		stationList = lecture.initGraphe(chemin, stationList, gareList);
 	}
 
 	/**
@@ -119,16 +119,18 @@ public class Carte {
 	}
 
 	/**
-	 * Permet d'initialiser toutes les stations pour l'utiliser dans la white liste dans dijsktra
+	 * Permet d'initialiser toutes les stations pour l'utiliser dans la white liste
+	 * dans dijsktra
 	 */
 	public void setStationList() {
 		for (Gare gare : gareList) {
-			stationList = gare.getStationGare();
+			stationList.addAll(gare.getStationGare());
 		}
 	}
 
 	/**
 	 * Recupère la liste des stations
+	 * 
 	 * @return
 	 */
 	public ArrayList<Station> getStationList() {

@@ -1,7 +1,6 @@
 package fastmetro;
 
-import java.sql.Date;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ public class Station extends Gare {
 	private int ligne;
 
 	/* Voisin des stations */
-	private ArrayList<Map<Station, Date>> voisinsList = new ArrayList<Map<Station, Date>>();
+	private Map<Station, Integer> voisinMap = new HashMap<Station,Integer>();
 
 	/**
 	 * Une Station est une composante d'une Gare. Elle représente en réalité un
@@ -63,24 +62,7 @@ public class Station extends Gare {
 		return "{ id:" + this.id + "ligne:" + this.ligne + " }" + "gareid" + this.getGareId();
 	}
 
-	/**
-	 * Ajoute un voisin
-	 * 
-	 * @param station
-	 * @param temps
-	 */
-	public void addCoupleStationVoisin(Station station, Date temps) {
-		Map<Station, Date> stationMap = new HashMap<>();
-		stationMap.put(station, temps);
-		this.voisinsList.add(stationMap);
-	}
-
-	/**
-	 * Retourne tous les couples des voisins
-	 * 
-	 * @return tous les voisins d'une station
-	 */
-	public ArrayList<Map<Station, Date>> getVoisins() {
-		return this.voisinsList;
+	public void addCoupleVoisin(Station station, int date) {
+		//voisinMap.put(station, date);
 	}
 }

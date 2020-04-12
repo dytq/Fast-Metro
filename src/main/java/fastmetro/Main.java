@@ -31,12 +31,12 @@ public class Main {
 		/* Importe les Stations d'un fichier */
 		metroParisien.importStations("data/parisStation.json");
 
-		/* Importe le graphe */
-		// metroParisien.importGraphe("data/parisGraphe.json");
-
-		/* Initialise la Carte dans l'interface graphique */
+		/* Initialise la Carte dans l'interface graphique, les stations */
 		metroParisien.initStationCarte();
-
+		
+		/* Importe le graphe */
+		metroParisien.importGraphe("data/parisGraphe.json");
+		
 		/* On selectionne deux stations et on affiche le plus court chemin */
 		metroParisien.cherchePlusCourtChemin();
 
