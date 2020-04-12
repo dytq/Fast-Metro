@@ -45,13 +45,6 @@ Voici l'algo adapter pour le programme:
 ## clic
 Le clic est mis en écoute. Quand on clic on fait appel à l'objet dijkstra initialisé dans la carte. Les tableaux sont temporaires et change à chaque itérations.
 
-# Contenu
-## Cartes
-On peut changer de carte dans image/carte.gif (faut changer le main en conséquence)
-
-## Stations et Gare
-On peut changer les stations, elles sont sauvegardées dans data carteStation.json et carteStation.json
-
 ## Source
 src/\*
 
