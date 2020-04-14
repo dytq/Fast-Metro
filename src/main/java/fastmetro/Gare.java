@@ -4,8 +4,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- * Une gare est un ensemble de stations. Un ensemble non structurellement liée,
- * car une gare n'a pas d'information en commun avec une station.
+ * Une gare est un ensemble de stations. C'est ce qui est reprenté en cercle
+ * rouge dans la carte
  * 
  * @author dedarally taariq
  *
@@ -56,7 +56,8 @@ public class Gare {
 
 	@Override
 	public String toString() {
-		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() + "+ id:" + this.gareid + '\n';
+		return "Gare:" + nom + " Coords {" + point.toString() + "}" + stationGare.toString() + "+ id:" + this.gareid
+				+ '\n';
 	}
 
 	/**
@@ -88,6 +89,7 @@ public class Gare {
 
 	/**
 	 * Récupère la taille de la liste des stations pour une gare
+	 * 
 	 * @return le nombre de quai dans une gare
 	 */
 	public int getNbrStations() {

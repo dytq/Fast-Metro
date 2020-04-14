@@ -9,6 +9,13 @@ import fastmetro.Gare;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Fenetre graphique de l'interface, on dessine ici la cartes et les stations
+ * pour l'interface
+ * 
+ * @author user
+ *
+ */
 public class Fenetre extends JFrame {
 
 	private static final long serialVersionUID = 1L;

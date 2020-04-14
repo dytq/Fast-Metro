@@ -11,6 +11,13 @@ import fastmetro.Dijkstra;
 import fastmetro.Gare;
 import fastmetro.Station;
 
+/**
+ * Ce qui se passe quand on clique sur une gare dans l'interface graphique, la
+ * souris est mise sous écoute.
+ * 
+ * @author dedarally taariq
+ *
+ */
 public class ClickSelectStation implements MouseListener {
 
 	/* Carte pour trouver les gares */

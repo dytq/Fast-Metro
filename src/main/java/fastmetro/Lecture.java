@@ -62,9 +62,7 @@ public class Lecture {
 			final GsonBuilder builder = new GsonBuilder();
 			final Gson gson = builder.create();
 			final int[][] valeurs = gson.fromJson(reader, int[][].class);
-
 			initStationsLigne(gareList, stationList, valeurs);
-
 		} catch (
 
 		FileNotFoundException e) {
@@ -74,7 +72,7 @@ public class Lecture {
 	}
 
 	/**
-	 * Initialistation station par station, sinon c'est impossible autrement
+	 * 
 	 * 
 	 * @param gareList
 	 * @param stationList
@@ -83,20 +81,22 @@ public class Lecture {
 	 */
 	private ArrayList<Station> initStationsLigne(ArrayList<Gare> gareList, ArrayList<Station> stationList,
 			int[][] valeurs) {
+		System.out.println("{" + gareList.size()+"}");
 		ArrayList<Station> stationLigne = new ArrayList<Station>();
-		for (int i = 0; i == 14; i++) {
+		for (int i = 0; i < 14; i++) {
 			stationLigne = getStationsLigne(gareList, i);
-			initVoisinStation(stationList, stationLigne, valeurs);
+			initVoisinStation(stationList, stationLigne, valeurs, i);
 		}
 		stationLigne = getStationsLigne(gareList, 77);
-		initVoisinStation(stationList, stationLigne, valeurs);
+		// initVoisinStation(stationList, stationLigne, valeurs, 77, gareList);
 		stationLigne = getStationsLigne(gareList, 33);
-		initVoisinStation(stationList, stationLigne, valeurs);
+		// initVoisinStation(stationList, stationLigne, valeurs, 33, gareList);
+		System.out.println(stationList.toString());
 		return stationList;
 	}
 
 	/**
-	 * Initialise les voisins stations
+	 * 
 	 * 
 	 * @param stationList
 	 * @param stationLigne
@@ -104,9 +104,23 @@ public class Lecture {
 	 * @return
 	 */
 	private ArrayList<Station> initVoisinStation(ArrayList<Station> stationList, ArrayList<Station> stationLigne,
-			int[][] valeurs) {
-		for (int i = 0; i < valeurs.length; i++) {
-			
+			int[][] valeurs, int ligne, ArrayList<Gare> gareList) {
+		for (Station station : stationLigne) {
+
+			for (int i = 0; i < valeurs.length; i++) {
+				for (int j = 0; j < 1; j++) {
+					if (valeurs[i][j] == station.getGareId()) {
+						System.out.println(valeurs[i][j^1]);
+						for (Station stationGare : gareList.get(valeurs[i][j^1]).getStationGare()) {
+							if (stationGare.getLigne() == ligne) {
+
+								//stationList.set(valeurs[i][j], stationGare.addCoupleVoisin(station, valeurs[i][2]));
+								break;
+							}
+						}
+					}
+				}
+			}
 		}
 		return stationList;
 	}

@@ -6,6 +6,12 @@ import java.awt.Point;
 
 import javax.swing.JPanel;
 
+/**
+ * Simple cercle
+ * 
+ * @author user
+ *
+ */
 public class Circle extends JPanel {
 
 	private static final long serialVersionUID = 1L;

@@ -1,9 +1,14 @@
 package fastmetro;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * C'est une station qui hérite d'une gare
+ * 
+ * @author dedarally taariq
+ *
+ */
 public class Station extends Gare {
 
 	/* Identifiant unique */
@@ -13,7 +18,7 @@ public class Station extends Gare {
 	private int ligne;
 
 	/* Voisin des stations */
-	private Map<Station, Integer> voisinMap = new HashMap<Station,Integer>();
+	private Map<Station, Integer> voisinMap = new HashMap<Station, Integer>();
 
 	/**
 	 * Une Station est une composante d'une Gare. Elle représente en réalité un
@@ -59,10 +64,11 @@ public class Station extends Gare {
 
 	@Override
 	public String toString() {
-		return "{ id:" + this.id + "ligne:" + this.ligne + " }" + "gareid" + this.getGareId();
+		return "{ id:" + this.id + "ligne:" + this.ligne + " }" + "gareid" + this.getGareId() + " " + voisinMap + "\n";
 	}
 
-	public void addCoupleVoisin(Station station, int date) {
-		//voisinMap.put(station, date);
+	public Station addCoupleVoisin(Station station, int date) {
+		voisinMap.put(station, date);
+		return station;
 	}
 }
