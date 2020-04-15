@@ -1,7 +1,7 @@
 # Fast-Metro
 
 ## Présentation du logiciel
-Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux stations de métro. Ce logiciel utilise la puissance de Java, de Jframe (bibliothèque graphique native de Java), Maven (pour les dépendances) et du standard Json, librairie Gson (lire et écrire sur un fichier) pour faciliter les transferts de données.
+Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux stations de métro. Ce logiciel est programmée avec Java, j'utilise: Jframe (bibliothèque graphique native de Java), Maven (pour les dépendances) et du standard Json, librairie Gson (lire et écrire sur un fichier) pour faciliter les transferts de données.
 
 # Execution
 java -jar releases/app/\*.jar
@@ -14,22 +14,23 @@ Voici un résumer de la structure du projet:
 
 1) fastmetro package: contient la classe main et les classes de structures de données
 	a) Main.class: class principal.
-	b) Carte.class: Tous ce qui concerne la carte.
+	b) Carte.class: Tous ce qui concerne la carte, la liste des gares, des stations et les appelle vers fenêtre.
 	c) Station.class: Tous ce qui concerne une station (numéro de la stations,ligne). Un station est traversée par une ligne dans les deux sens de circulations. Elle hérite d'une gare pour pouvoir obtenir l'identifiant de la gare dont laquelle est affecté.
 	d) Gare.class: Une gare est un ensemble de stations. Elle contient un nom et une liste de stations.
-	e) Lecture.class: Pour lire un json.
+	e) Lecture.class: Pour lire un fichier json dans le système de fichier.
 	f) Dijkstra: Implémentation de l'algo et utilisation d'un tableau pour faire les opérations.
-	g) Ecriture.class(non utilisé): Pour écrire sur un json(initialisé des stations sur une nouvelle carte et faire un nouveau graphe)
 
-2) GUI package: pour l'interface graphique utilisateur (voir dans la javadoc dans Documentation/index.html avec un navigateur pour plus de detail). Mais en gros, on a une fenetre, un panel(station pannel) pour dessiner les stations(changer les couleurs etc...) et circle qui représente un cercle utiliser pour l'affichage des stations. 
+2) GUI package: c'est pour l'interface graphique de l'utilisateur (voir dans la javadoc dans Documentation/index.html avec un navigateur pour plus de detail). Mais en gros, on a une fenetre, un panel(station pannel) pour dessiner les stations(changer les couleurs etc...), circle qui représente un cercle utiliser pour l'affichage des stations et une classe de clique mise sur écoute. 
+
+### \# Je détaille ici l'implémentation:
 
 # Algorithme du plus court chemin: Dijkstra
 
 ## Structure de données
 On a deux tableaux:
 
-- Matrice de Dijkstra Dynamic, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le cumul du temps, le père\>
-- Liste dynamique des stations coloriés. Quand une station est colorié on la supprime de la liste.
+- Matrice de Dijkstra, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le père, le cumul du temps\>
+- Liste dynamique des stations coloriés. Quand une station est colorié on la supprime de la liste.(white liste)
 
 ## Dérouler de l'algorithme
 Voici l'algo adapter pour le programme:
@@ -41,21 +42,17 @@ Voici l'algo adapter pour le programme:
 - Pour chaque voisin on vérifie si elle inferieur à celle entrée. Et on écrase la valeur.
 - Puis on cherche les pères successif du tableau de la dernière ligne.
 
+# Détail de l'implémentation de fast-métro
+
 # Détail de l'utilisation de l'interface graphique
 ## clic
 Le clic est mis en écoute. Quand on clic on fait appel à l'objet dijkstra initialisé dans la carte. Les tableaux sont temporaires et change à chaque itérations.
 
-## Source
-src/\*
-
+# Annexe
 ## Documentation 
 javadoc dans Documentation/index.html
 
-# Annexe
-
 ## Screencapture
 
-
 ## Disponible sur github
-
 \url{https://github.com/dytq/Fast-Metro}
