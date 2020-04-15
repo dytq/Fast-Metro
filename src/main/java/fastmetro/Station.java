@@ -35,7 +35,6 @@ public class Station extends Gare {
 	}
 
 	public Station(Station station) {
-		super();
 		this.id = station.id;
 		this.ligne = station.ligne;
 	}
@@ -64,11 +63,27 @@ public class Station extends Gare {
 
 	@Override
 	public String toString() {
-		return "{ id:" + this.id + "ligne:" + this.ligne + " }" + "gareid" + this.getGareId() + " " + voisinMap + "\n";
+		return "{ id:" + this.id + "ligne:" + this.ligne + " } gareid: " + "gareid" + this.getGareId() + "\n";
 	}
 
 	public Station addCoupleVoisin(Station station, int date) {
-		voisinMap.put(station, date);
-		return station;
+		this.voisinMap.put(station, date);
+		return this;
+	}
+
+	public Map<Station, Integer> getVoisinsMap() {
+		return voisinMap;
+	}
+
+	public void afficheVoisin() {
+		try {
+			for (Map.Entry mapentry : this.voisinMap.entrySet()) {
+				System.out.println("clé: " + mapentry.getKey() + " | valeur: " + mapentry.getValue());
+
+			}
+		} catch(Exception e) {
+			System.out.print("null");
+		}
+	
 	}
 }

@@ -124,7 +124,9 @@ public class Carte {
 	 */
 	public void setStationList() {
 		for (Gare gare : gareList) {
-			stationList.addAll(gare.getStationGare());
+			for (Station station : gare.getStationGare()) {
+				stationList.add(station);
+			}
 		}
 	}
 
