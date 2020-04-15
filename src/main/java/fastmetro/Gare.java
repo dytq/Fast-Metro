@@ -96,10 +96,17 @@ public class Gare {
 		return this.stationGare.size();
 	}
 
+	/*
+	 * Permet di'initaliser l'id gare par rapport au tableau de gare dans la carte
+	 */
 	public void setGareId(int i) {
 		this.gareid = i;
 	}
 
+	/**
+	 * Permet de récupérer l'id gare
+	 * @return
+	 */
 	public int getGareId() {
 		return this.gareid;
 	}

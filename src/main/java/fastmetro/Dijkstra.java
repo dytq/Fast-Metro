@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
  *
  */
 public class Dijkstra {
-	// int a = (int) ((Math.pow(2, 31)));
-	// System.out.print(a);
+
 	/* Premier cercle selectionner */
 	Station stationDepart;
 
@@ -68,7 +67,7 @@ public class Dijkstra {
 	}
 
 	/**
-	 * Permet simplement de récuperer la selection de la ligne entrée par
+	 * Permet de récuperer la selection de la ligne entrée par
 	 * l'utiilisateur
 	 * 
 	 * @param stationsGare
@@ -135,6 +134,9 @@ public class Dijkstra {
 
 		stationListTmp = initWhiteList();
 
+		// int a = (int) ((Math.pow(2, 31)));
+		// System.out.print("Max:"+ a);
+		
 		// init première ligne
 		// on ajoute 0 à la station de départ
 		// boucle tant que toutes les stations sont prises

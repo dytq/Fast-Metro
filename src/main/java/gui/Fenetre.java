@@ -42,18 +42,6 @@ public class Fenetre extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	/**
-	 * Permet l'ajout d'une station :: obsolète
-	 * 
-	 * @param cheminEcriture pour sauvegarder une station
-	 */
-	// public void addStation(String cheminEcriture) {
-	// StationPanel panel = new StationPanel(cheminCarte); // dessine les stations
-	// sur la carte
-	// this.add(panel);
-	// panel.addMouseListener(new ClickDrawStation(panel,cheminEcriture));
-	// }
-
 	public void printStation(ArrayList<Gare> gareList) {
 		// dessine les stations sur la carte
 		this.add(panel);

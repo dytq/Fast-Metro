@@ -48,6 +48,10 @@ public class Station extends Gare {
 		return this.id;
 	}
 
+	/**
+	 * Permet de récupérer l'id gare mère
+	 * @return
+	 */
 	public int getIdGare() {
 		return this.getGareId();
 	}
@@ -61,20 +65,33 @@ public class Station extends Gare {
 		return this.ligne;
 	}
 
+	/**
+	 * Récupere la chaine de caractère des données d'une station
+	 */
 	@Override
 	public String toString() {
 		return "{ id:" + this.id + "ligne:" + this.ligne + " } gareid: " + "gareid" + this.getGareId() + "\n";
 	}
 
-	public Station addCoupleVoisin(Station station, int date) {
+
+	/**
+	 * Ajoute une couple de voisins à cette stations
+	 * @param station
+	 * @param date
+	 */
+	public void addCoupleVoisin(Station station, int date) {
 		this.voisinMap.put(station, date);
-		return this;
 	}
 
+	/**
+	 * Récupère les Couples des voisins stations à cette station
+	 * @return
+	 */
 	public Map<Station, Integer> getVoisinsMap() {
 		return voisinMap;
 	}
 
+	/* a suppr
 	public void afficheVoisin() {
 		try {
 			for (Map.Entry mapentry : this.voisinMap.entrySet()) {
@@ -85,5 +102,5 @@ public class Station extends Gare {
 			System.out.print("null");
 		}
 	
-	}
+	}*/
 }
