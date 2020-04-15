@@ -73,7 +73,17 @@ public class Carte {
 	}
 
 	public void importGraphe(String chemin) {
-		stationList = lecture.initGraphe(chemin, stationList, gareList);
+		stationList = lecture.initGraphe(chemin, stationList);
+		int i = 0;
+		int j = 0;
+		for (Gare gare : gareList) {
+			for (Station station : gare.getStationGare()) {
+				gare.getStationGare().set(j, stationList.get(i));
+				j++;
+				i++;
+			}
+			j = 0;
+		}
 	}
 
 	/**

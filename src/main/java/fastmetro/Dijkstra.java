@@ -3,7 +3,8 @@ package fastmetro;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 
 /**
  * Ensemble des algorithmes permettant l'utilisation de dijkstra
@@ -12,7 +13,8 @@ import java.util.Scanner;
  *
  */
 public class Dijkstra {
-
+	// int a = (int) ((Math.pow(2, 31)));
+	// System.out.print(a);
 	/* Premier cercle selectionner */
 	Station stationDepart;
 
@@ -24,10 +26,6 @@ public class Dijkstra {
 
 	/* si c'est la station de départ */
 	int isStationDepart;
-
-	/* Pour selectionner une ligne */
-	private Scanner prompt = new Scanner(System.in);
-
 	/*
 	 * Carte pour récuperer des données concernant la carte et faire les algorithmes
 	 */
@@ -67,7 +65,6 @@ public class Dijkstra {
 			stationArriver = station;
 			nbrStation++;
 		}
-
 	}
 
 	/**
@@ -79,60 +76,36 @@ public class Dijkstra {
 	 * @return
 	 */
 	private Station getQuai(ArrayList<Station> stationsGare, int id) {
-		int ligne = -1;
 		if (stationsGare.size() > 1) {
-			System.out.print("Dans quel quai vous êtes ?");
-			afficheListeDeStations(stationsGare);
-			/* on aurait pu faire un try catch dans la fonction station */
+			int ligne = -1;
+			String[] mesOptions = new String[stationsGare.size()];
+			int i = 0;
+			for (Station station : stationsGare) {
+				mesOptions[i] = String.valueOf(station.getLigne());
+				i++;
+			}
+			String ligneEntree = new String();
 			do {
-				String ligneEntree = prompt.nextLine();
-				try {
-					ligne = Integer.parseInt(ligneEntree);
-				} catch (Exception e) {
-					System.out.println("RTFM: Oh la la, on demande en chiffre pas lettre !!!");
-				}
-
-			} while (!(ligneEntreeValide(stationsGare, ligne)) || ligne == -1); // si il y a une erreur d'entrée avec le
-
+				ligneEntree = (String) JOptionPane.showInputDialog(null, "Dans quel quai vous êtes ?", "Fast Metro",
+						JOptionPane.QUESTION_MESSAGE, null, mesOptions, mesOptions[1]);
+			} while (ligneEntree == null); // Forcer l'utilisateur à selectionner une ligne
+			try {
+				ligne = Integer.parseInt(ligneEntree);
+			} catch (NumberFormatException e) {
+				System.out.println("[Debug] Données ligne corrompu");
+				System.exit(0); /* On quitte si les données sont corrompus */
+			}
 			for (Station station : stationsGare) {
 				if (station.getLigne() == ligne) {
-					System.out.println();
-					System.out.println("Ligne " + ligne + " selectionnée ");
-					System.out.println();
+					JOptionPane.showMessageDialog(null,
+							"Fast-Métro vous informe que vous avez selectionné la ligne " + ligne);
 					return station;
 				}
 			}
 		}
+		JOptionPane.showMessageDialog(null,
+				"Fast-Métro vous informe que vous avez selectionné la ligne " + stationsGare.get(0).getLigne());
 		return stationsGare.get(0);
-	}
-
-	/**
-	 * Affiche la liste des lignes disponible pour une station
-	 * 
-	 * @param stationsGare
-	 */
-	private void afficheListeDeStations(ArrayList<Station> stationsGare) {
-		for (Station station : stationsGare) {
-			System.out.print("[" + station.getLigne() + "]");
-		}
-	}
-
-	/**
-	 * Regarde si l'utilisateur a selectionner un numéro de ligne valide
-	 * 
-	 * @param stationsGare
-	 * @param ligne
-	 * @return
-	 */
-	private boolean ligneEntreeValide(ArrayList<Station> stationsGare, int ligne) {
-		for (Station station : stationsGare) {
-			if (station.getLigne() == ligne) {
-				return true;
-			}
-		}
-		System.out.println("La station n'existe pas ! Voici la liste des stations, recommence:");
-		afficheListeDeStations(stationsGare);
-		return false;
 	}
 
 	/**

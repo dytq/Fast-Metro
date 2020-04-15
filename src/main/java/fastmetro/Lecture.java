@@ -56,7 +56,7 @@ public class Lecture {
 	 * @param stationList
 	 * @param gareList
 	 */
-	public ArrayList<Station> initGraphe(String chemin, ArrayList<Station> stationList, ArrayList<Gare> gareList) {
+	public ArrayList<Station> initGraphe(String chemin, ArrayList<Station> stationList) {
 		Reader reader;
 		try {
 			reader = new FileReader(chemin);
@@ -73,7 +73,7 @@ public class Lecture {
 	}
 
 	/**
-	 * 
+	 * Initialise une valeur pour la station list
 	 * 
 	 * @param gareList
 	 * @param stationList
