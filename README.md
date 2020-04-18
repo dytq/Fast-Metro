@@ -29,7 +29,7 @@ Voici un résumer de la structure du projet:
 ## Structure de données
 On a deux tableaux:
 
-- Matrice de Dijkstra, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le père, le cumul du temps\>
+- Matrice de Dijkstra, c'est-à-dire en abscisse les id des stations et en ordonnée les étapes. A chaque case, on a un couple de valeur: \<le père, le cumul du temps\>. La matrice est une structure de hachage. Il y a pas besoin d'initialiser les données, car ca fonctionne par clées. Si la clées n'existe pas alors la valeur dessus sera l'infinie.
 - Liste dynamique des stations coloriés. Quand une station est colorié on la supprime de la liste.(white liste)
 
 ## Dérouler de l'algorithme
@@ -47,6 +47,19 @@ Voici l'algo adapter pour le programme:
 # Détail de l'utilisation de l'interface graphique
 ## clic
 Le clic est mis en écoute. Quand on clic on fait appel à l'objet dijkstra initialisé dans la carte. Les tableaux sont temporaires et change à chaque itérations.
+
+# Organisation du travail
+Voici l'organisation du travail
+
+- Initialisé le projet
+- Mode édition (pour init le json)
+- convertir les fichiers txt en json (utilisation d'un petit programme pour le fichier des stations et utilisation des registres vim pour le graphe)
+- Initialiser la carte
+- Initialiser le graphe 
+- Préparation de dijkstra, établir les structures de données
+- Ecriture de l'algo
+- afficher le chemin le plus court
+- correction de données
 
 # Annexe
 ## Documentation 

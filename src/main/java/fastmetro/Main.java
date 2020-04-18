@@ -1,6 +1,6 @@
 package fastmetro;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 /**
  * Fast-Metro: Code principal, il s'agit juste de faire appelle à des modules de
