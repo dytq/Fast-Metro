@@ -1953,8 +1953,8 @@
 	{
 		"nom": "Madeleine",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 332,
+			"y": 329
 		},
 		"stationGare": [
 			{
@@ -2153,7 +2153,7 @@
 			},
 			{
 				"id": 192,
-				"ligne": 8
+				"ligne": 4
 			}
 		]
 	},
@@ -2259,8 +2259,8 @@
 	{
 		"nom": "Micormesnil",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 343,
+			"y": 286
 		},
 		"stationGare": [
 			{
@@ -2378,8 +2378,8 @@
 	{
 		"nom": "Nationale",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 686,
+			"y": 576
 		},
 		"stationGare": [
 			{
@@ -2584,8 +2584,8 @@
 	{
 		"nom": "Picpus",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 895,
+			"y": 469
 		},
 		"stationGare": [
 			{
@@ -3162,8 +3162,8 @@
 	{
 		"nom": "Péreire",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 277,
+			"y": 168
 		},
 		"stationGare": [
 			{
@@ -3442,8 +3442,8 @@
 	{
 		"nom": "République",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 696,
+			"y": 299
 		},
 		"stationGare": [
 			{
@@ -3824,8 +3824,8 @@
 	{
 		"nom": "Sèvres Lecourbe",
 		"point": {
-			"x": 10,
-			"y": 10
+			"x": 335,
+			"y": 512
 		},
 		"stationGare": [
 			{

@@ -204,6 +204,8 @@ public class Dijkstra {
 	private ArrayList<Station> retrouveChemin(Hashtable<Station, CouplePereTemps> matriceDijkstra,
 			ArrayList<String> str) {
 		ArrayList<Station> stationListRes = new ArrayList<Station>();
+		System.out.println(matriceDijkstra.size());
+		//afficheMatrice(matriceDijkstra);
 		/* Station de Départ pour la remonter des stations */
 		if (!matriceDijkstra.containsKey(stationArriver)) {
 			stationListRes.add(stationDepart);
@@ -231,6 +233,14 @@ public class Dijkstra {
 			str.add("☞" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
 		} catch (Exception e) {
 
+		}
+	}
+	private void afficheMatrice(Hashtable<Station, CouplePereTemps> matriceDijkstra) {
+		Iterator<Entry<Station, CouplePereTemps>> it = matriceDijkstra.entrySet().iterator();
+
+		while (it.hasNext()) {
+			Entry<Station, CouplePereTemps> element = it.next();
+			System.out.println(element.getKey());
 		}
 	}
 }
