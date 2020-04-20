@@ -2689,7 +2689,7 @@
 		]
 	},
 	{
-		"nom": "247",
+		"nom": "Place des Fêtes",
 		"point": {
 			"x": 884,
 			"y": 238
@@ -3779,15 +3779,15 @@
 		"stationGare": [
 			{
 				"id": 342,
-				"ligne": 2
+				"ligne": 4
 			},
 			{
 				"id": 343,
-				"ligne": 5
+				"ligne": 8
 			},
 			{
 				"id": 344,
-				"ligne": 7
+				"ligne": 9
 			}
 		]
 	},

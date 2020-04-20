@@ -39,6 +39,7 @@ public class Station extends Gare {
 		this.ligne = station.ligne;
 		this.setVoisin(station.getVoisins());
 		this.setGareNom(station.getNom());
+		this.setGareId(station.getGareId());
 	}
 	
 

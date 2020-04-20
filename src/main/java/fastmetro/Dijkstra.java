@@ -214,16 +214,16 @@ public class Dijkstra {
 		CouplePereTemps couple;
 		couple = matriceDijkstra.get(stationArriver);
 		addToString(str,stationArriver);
+		stationListRes.add(stationArriver);
 		Station station = couple.getStation();
-		stationListRes.add(station);
 		while (station.getId() != stationDepart.getId()) {
 			addToString(str,station);
+			stationListRes.add(station);
 			couple = matriceDijkstra.get(station);
 			station = couple.getStation();
-			stationListRes.add(station);
 		}
 		addToString(str,stationDepart);
-		stationListRes.add(stationArriver);
+		stationListRes.add(stationDepart);
 		return stationListRes;
 	}
 	private void addToString(ArrayList<String> str,Station station) {

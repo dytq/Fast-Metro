@@ -24,10 +24,10 @@ public class CouplePereTemps {
 	public void setTemps(int temps) {
 		this.temps = temps;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Station: " + station.getId() + " Temps: " + this.temps;
 	}
-	
+
 }
