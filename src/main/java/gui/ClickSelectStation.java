@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import fastmetro.Carte;
 import fastmetro.Dijkstra;
 import fastmetro.Gare;
@@ -51,7 +53,7 @@ public class ClickSelectStation implements MouseListener {
 	public void mouseClicked(MouseEvent event) {
 		if (click == 0) {
 			ArrayList<Station> listStations = new ArrayList<Station>();
-			listStations.addAll(this.dijkstra.calculPlusCourtChemin());
+			listStations.addAll(this.dijkstra.calculPlusCourtChemin(carte.getStationList(), null));
 			for (Station station : listStations) {
 				panel.setCircleColor(Color.red, station.getGareId());
 			}
@@ -69,7 +71,10 @@ public class ClickSelectStation implements MouseListener {
 			click = 1 - click;
 			if (click == 0) {
 				ArrayList<Station> listStations = new ArrayList<Station>();
-				listStations.addAll(this.dijkstra.calculPlusCourtChemin());
+				ArrayList<String> str = new ArrayList<String>();
+				listStations.addAll(this.dijkstra.calculPlusCourtChemin(carte.getStationList(), str));
+				String res = String.join("", str);
+				JOptionPane.showMessageDialog(null, res);
 				for (Station station : listStations) {
 					panel.setCircleColor(Color.black, station.getGareId());
 				}

@@ -102,6 +102,9 @@ public class Gare {
 	public void setGareId(int i) {
 		this.gareid = i;
 	}
+	public void setGareNom(String nom) {
+		this.nom = nom;
+	}
 
 	/**
 	 * Permet de récupérer l'id gare
@@ -109,5 +112,8 @@ public class Gare {
 	 */
 	public int getGareId() {
 		return this.gareid;
+	}
+	public String getGareNom() {
+		return this.nom;
 	}
 }

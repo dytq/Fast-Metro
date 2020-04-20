@@ -38,6 +38,7 @@ public class Lecture {
 				gare.setGareId(i);
 				for (Station station : gare.getStationGare()) {
 					station.setGareId(gare.getGareId());
+					station.setGareNom(gare.getNom());
 				}
 				i++;
 			}

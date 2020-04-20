@@ -1,10 +1,9 @@
 package fastmetro;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
 
@@ -27,6 +26,7 @@ public class Dijkstra {
 
 	/* si c'est la station de départ */
 	int isStationDepart;
+
 	/*
 	 * Carte pour récuperer des données concernant la carte et faire les algorithmes
 	 */
@@ -54,7 +54,7 @@ public class Dijkstra {
 	public void addGareId(int id) {
 		ArrayList<Station> stationsGare = new ArrayList<Station>();
 		stationsGare = carte.getGareList().get(id).getStationGare();
-		Station station = new Station(getQuai(stationsGare, id));
+		Station station = getQuai(stationsGare, id);
 		station.setGareId(id);
 
 		this.isStationDepart = 1 - this.isStationDepart;
@@ -97,14 +97,10 @@ public class Dijkstra {
 			}
 			for (Station station : stationsGare) {
 				if (station.getLigne() == ligne) {
-					JOptionPane.showMessageDialog(null,
-							"Fast-Métro vous informe que vous avez selectionné la ligne " + ligne);
 					return station;
 				}
 			}
 		}
-		JOptionPane.showMessageDialog(null,
-				"Fast-Métro vous informe que vous avez selectionné la ligne " + stationsGare.get(0).getLigne());
 		return stationsGare.get(0);
 	}
 
@@ -125,62 +121,78 @@ public class Dijkstra {
 	 * Permet de calculer le plus court chemin. Détail du fonctionnement dans le
 	 * rapport
 	 * 
+	 * @param arrayList
+	 * 
 	 * @param stationList
 	 * 
 	 * @return la liste des stations qui indique le chemin le plus courtsqxs<
 	 */
-	public ArrayList<Station> calculPlusCourtChemin() {
+	public ArrayList<Station> calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str) {
 		/* Matrice de Dijkstra détaillée dans le rapport */
 		Hashtable<Station, CouplePereTemps> matriceDijkstra_atraiter = new Hashtable<Station, CouplePereTemps>();
 		Hashtable<Station, CouplePereTemps> matriceDijkstra_res = new Hashtable<Station, CouplePereTemps>();
 
 		/* Initialisation */
 		matriceDijkstra_atraiter.put(stationDepart, new CouplePereTemps(stationDepart, 0));
-		matriceDijkstra_atraiter.put(stationArriver, new CouplePereTemps(stationDepart, 0));
-		/* Boucle tant que chaque sommet à un voisin */
-		/* while(stationListTmp.size()> 0) */
-		/* 1. Trouver le min */
-		Station pere = new Station(getMinDijkstra(matriceDijkstra_atraiter));
-		/* On ajoute les voisins et leurs temps */
-		// Station stationPere = new Station(matriceDijkstra_atraiter.)
-		/*
-		 * for (CouplePereTemps voisins : stationDepart.getVoisins()) {
-		 * 
-		 * matriceDijkstra_atraiter.put(voisins.getStation(), new
-		 * CouplePereTemps(stationDepart,
-		 * matriceDijkstra_atraiter.get(stationDepart).getTemps() +
-		 * voisins.getTemps())); }
-		 * 
-		 * 
-		 * /* { // on copie la ligne précedente à la currente // pour la station
-		 * currente on cherche ses voisins et on l'écrase dans la // deuxième ligne si
-		 * elle est inférieur à la case currente // on fin boucle }
-		 */
-		System.out.println(pere.getId());
-		return retrouveChemin(matriceDijkstra_res);
+
+		for (CouplePereTemps station : stationDepart.getVoisins()) {
+			if (!(matriceDijkstra_res.containsKey(station.getStation()))) {
+
+				matriceDijkstra_atraiter.put(station.getStation(), new CouplePereTemps(stationDepart,
+						matriceDijkstra_atraiter.get(stationDepart).getTemps() + station.getTemps()));
+			}
+		}
+
+		matriceDijkstra_res.put(stationDepart, matriceDijkstra_atraiter.get(stationDepart));
+		matriceDijkstra_atraiter.remove(stationDepart);
+
+		/* Boucle */
+
+		while (!matriceDijkstra_atraiter.isEmpty()) {
+
+			Station station = getMinDijkstra(matriceDijkstra_atraiter);
+
+			for (CouplePereTemps couple : stationList.get(station.getId()).getVoisins()) {
+
+				if (!(matriceDijkstra_res.containsKey(couple.getStation()))) {
+
+					if (matriceDijkstra_atraiter.containsKey(couple.getStation())) {
+
+						if (matriceDijkstra_atraiter.get(couple.getStation())
+								.getTemps() < matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()) {
+
+							matriceDijkstra_atraiter.put(couple.getStation(), new CouplePereTemps(stationDepart,
+									matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()));
+						}
+					} else {
+						matriceDijkstra_atraiter.put(couple.getStation(), new CouplePereTemps(station,
+								matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()));
+					}
+				}
+			}
+			matriceDijkstra_res.put(station, matriceDijkstra_atraiter.get(station));
+			matriceDijkstra_atraiter.remove(station);
+		}
+		return retrouveChemin(matriceDijkstra_res,str);
 	}
 
 	private Station getMinDijkstra(Hashtable<Station, CouplePereTemps> matriceDijkstra_atraiter) {
-		Enumeration e = matriceDijkstra_atraiter.elements();
-		int min = 0; // pas besoin du premier element, le min c'est toujours 0
-		int idStation;
-		while (e.hasMoreElements()) {
-			if(Math.min(min, matriceDijkstra_atraiter.get(e.nextElement()).getTemps()) != min) {
-				idStation = matriceDijkstra_atraiter.get(e.nextElement()).getStation().getId();
-			};
-			e.nextElement();
-		}
-		return matriceDijkstra_atraiter.get().getStation();
-	}
+		int min = (int) Math.pow(2, 31);
+		Station e = null;
+		int tempsTmp = 0;
 
-	/**
-	 * Initialise la white Liste, récupère toutes les stations
-	 * 
-	 * @return
-	 */
-	/*
-	 * private ArrayList<Station> initWhiteList() { return carte.getStationList(); }
-	 */
+		Iterator<Entry<Station, CouplePereTemps>> it = matriceDijkstra_atraiter.entrySet().iterator();
+
+		while (it.hasNext()) {
+			Entry<Station, CouplePereTemps> element = it.next();
+			tempsTmp = element.getValue().getTemps();
+			if (Math.min(min, tempsTmp) != min) {
+				min = tempsTmp;
+				e = element.getKey();
+			}
+		}
+		return e;
+	}
 
 	/**
 	 * Permet de retrouver par monté successif les stations pères, pour les
@@ -189,11 +201,36 @@ public class Dijkstra {
 	 * @param matriceDijkstra
 	 * @return
 	 */
-	private ArrayList<Station> retrouveChemin(Hashtable<Station, CouplePereTemps> matriceDijkstra) {
+	private ArrayList<Station> retrouveChemin(Hashtable<Station, CouplePereTemps> matriceDijkstra,
+			ArrayList<String> str) {
 		ArrayList<Station> stationListRes = new ArrayList<Station>();
-		stationListRes.add(stationDepart);
+		/* Station de Départ pour la remonter des stations */
+		if (!matriceDijkstra.containsKey(stationArriver)) {
+			stationListRes.add(stationDepart);
+			stationListRes.add(stationArriver);
+			JOptionPane.showMessageDialog(null, "Ouh! Ligne non connecté");
+			return stationListRes;
+		}
+		CouplePereTemps couple;
+		couple = matriceDijkstra.get(stationArriver);
+		addToString(str,stationArriver);
+		Station station = couple.getStation();
+		stationListRes.add(station);
+		while (station.getId() != stationDepart.getId()) {
+			addToString(str,station);
+			couple = matriceDijkstra.get(station);
+			station = couple.getStation();
+			stationListRes.add(station);
+		}
+		addToString(str,stationDepart);
 		stationListRes.add(stationArriver);
-		// Lecture de la matrice ligne par ligne en remontant */
 		return stationListRes;
+	}
+	private void addToString(ArrayList<String> str,Station station) {
+		try {
+			str.add("☞" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
+		} catch (Exception e) {
+
+		}
 	}
 }

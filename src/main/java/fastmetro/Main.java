@@ -1,6 +1,6 @@
 package fastmetro;
 
-//import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 
 /**
  * Fast-Metro: Code principal, il s'agit juste de faire appelle à des modules de
@@ -28,11 +28,11 @@ public class Main {
 
 		/* Importe le graphe */
 		metroParisien.importGraphe("data/parisGraphe.json");
-		
+
 		/* Message du début */
-		/*JOptionPane.showMessageDialog(null,
-				"Bienvenue sur Fast-Metro! \n Le logiciel qui vous permet de trouver le plus court chemin entre deux stations\n Quick-Start:\n 1.On clique sur une station et on selectionne si besoin la ligne souhaité \n 2.On recommence une autre fois.\n 3.Puis on clique pour afficher le chemin.\n En esperant que le logiciel réponde à vos besoin, l'équipe de Fast-métro");
-		*/
+		JOptionPane.showMessageDialog(null,
+				"Bienvenue sur Fast-Metro! \n Le logiciel qui vous permet de trouver le plus court chemin entre deux stations\n Quick-Start:\n 1.On clique sur une station et on selectionne si besoin la ligne souhaité \n 2.On recommence une autre fois.\n 3.Puis on clique pour afficher le chemin.\n l'équipe de Fast-métro");
+
 		/* On selectionne deux stations et on affiche le plus court chemin */
 		metroParisien.cherchePlusCourtChemin();
 	}

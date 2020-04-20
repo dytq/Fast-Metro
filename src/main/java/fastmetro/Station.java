@@ -38,7 +38,9 @@ public class Station extends Gare {
 		this.id = station.id;
 		this.ligne = station.ligne;
 		this.setVoisin(station.getVoisins());
+		this.setGareNom(station.getNom());
 	}
+	
 
 	/**
 	 * Obtenir l'identifiant d'une Station
@@ -48,16 +50,11 @@ public class Station extends Gare {
 	public int getId() {
 		return this.id;
 	}
-
-	/**
-	 * Permet de récupérer l'id gare mère
-	 * 
-	 * @return
-	 */
-	public int getIdGare() {
-		return this.getGareId();
+	
+	public String getNomGare() {
+		return this.getNom();
 	}
-
+	
 	public void setVoisin(ArrayList<CouplePereTemps> voisin) {
 		if (voisin != null) {
 			for (CouplePereTemps couple : voisin) {
@@ -101,14 +98,4 @@ public class Station extends Gare {
 	public ArrayList<CouplePereTemps> getVoisins() {
 		return voisin;
 	}
-
-	/*
-	 * a suppr public void afficheVoisin() { try { for (Map.Entry mapentry :
-	 * this.voisinMap.entrySet()) { System.out.println("clé: " + mapentry.getKey() +
-	 * " | valeur: " + mapentry.getValue());
-	 * 
-	 * } } catch(Exception e) { System.out.print("null"); }
-	 * 
-	 * }
-	 */
 }
