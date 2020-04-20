@@ -124,7 +124,7 @@ public class Dijkstra {
 	 * @param str pour afficher le message
 	 * @return la liste des stations qui indique le chemin le plus court
 	 */
-	public ArrayList<Station> calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str) {
+	public int calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str, ArrayList<Station>stationListRes) {
 		/* Matrice de Dijkstra détaillée dans le rapport */
 		Hashtable<Integer, CouplePereTemps> matriceDijkstra_atraiter = new Hashtable<Integer, CouplePereTemps>();
 		Hashtable<Integer, CouplePereTemps> matriceDijkstra_res = new Hashtable<Integer, CouplePereTemps>();
@@ -160,7 +160,7 @@ public class Dijkstra {
 
 			station = getMinDijkstra(matriceDijkstra_atraiter);
 		}
-		return retrouveChemin(matriceDijkstra_res, str, stationList);
+		return retrouveChemin(matriceDijkstra_res, str, stationList, stationListRes);
 	}
 
 	/**
@@ -195,16 +195,15 @@ public class Dijkstra {
 	 * @param matriceDijkstra
 	 * @return la liste des chemins
 	 */
-	private ArrayList<Station> retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra,
-			ArrayList<String> str, ArrayList<Station> stationList) {
+	private int retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra,
+			ArrayList<String> str, ArrayList<Station> stationList,ArrayList<Station> stationListRes) {
 
-		ArrayList<Station> stationListRes = new ArrayList<Station>();
 		/* Si la stations d'arrivée est inaccesible */
 		if (!matriceDijkstra.containsKey(stationArriver.getId())) {
 			stationListRes.add(stationDepart);
 			stationListRes.add(stationArriver);
 			JOptionPane.showMessageDialog(null, "Ouh! Ligne non connecté");
-			return stationListRes;
+			return 0;
 		}
 		/* Initialisation */
 		CouplePereTemps couple;
@@ -224,8 +223,7 @@ public class Dijkstra {
 
 		addToString(str, stationDepart);
 		stationListRes.add(stationDepart);
-
-		return stationListRes;
+		return matriceDijkstra.get(stationArriver.getGareId()).getTemps();
 	}
 
 	/**
@@ -235,7 +233,7 @@ public class Dijkstra {
 	 */
 	private void addToString(ArrayList<String> str, Station station) {
 		try {
-			str.add("☞" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
+			str.add("☞" + "Prendre la station " + station.getGareNom() + " : Ligne " + station.getLigne() + "\n");
 		} catch (Exception e) {
 
 		}

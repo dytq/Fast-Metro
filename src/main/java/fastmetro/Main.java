@@ -15,7 +15,7 @@ public class Main {
 	 * Fonction principal: On initialise une carte et on fait des calculs dessus
 	 * 
 	 */
-	public static void main() {
+	public static void main(String[] args) {
 		/* Initialise une Carte */
 		Carte metroParisien = new Carte("Metro Parisien", "image/paris.gif");
 

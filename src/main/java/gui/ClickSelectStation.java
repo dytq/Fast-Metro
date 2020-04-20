@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JOptionPane;
 
@@ -53,7 +54,7 @@ public class ClickSelectStation implements MouseListener {
 	public void mouseClicked(MouseEvent event) {
 		if (click == 0) {
 			ArrayList<Station> listStations = new ArrayList<Station>();
-			listStations.addAll(this.dijkstra.calculPlusCourtChemin(carte.getStationList(), null));
+			this.dijkstra.calculPlusCourtChemin(carte.getStationList(), null,listStations);
 			for (Station station : listStations) {
 				panel.setCircleColor(Color.red, station.getGareId());
 			}
@@ -72,12 +73,14 @@ public class ClickSelectStation implements MouseListener {
 			if (click == 0) {
 				ArrayList<Station> listStations = new ArrayList<Station>();
 				ArrayList<String> str = new ArrayList<String>();
-				listStations.addAll(this.dijkstra.calculPlusCourtChemin(carte.getStationList(), str));
-				String res = String.join("", str);
-				JOptionPane.showMessageDialog(null, res);
+				int total = 0;
+				total = this.dijkstra.calculPlusCourtChemin(carte.getStationList(), str,listStations);
 				for (Station station : listStations) {
 					panel.setCircleColor(Color.black, station.getGareId());
 				}
+				Collections.reverse(str);
+				String res = String.join("", str).concat("\n Le tout prendra " + total +" secondes");
+				JOptionPane.showMessageDialog(null, res);
 			}
 		}
 	}
