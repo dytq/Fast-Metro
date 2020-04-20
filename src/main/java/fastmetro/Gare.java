@@ -48,7 +48,7 @@ public class Gare {
 	/**
 	 * Ajout d'une Station dans la Gare
 	 * 
-	 * @param station
+	 * @param station à ajouter
 	 */
 	public void addStation(Station station) {
 		stationGare.add(station);
@@ -96,23 +96,33 @@ public class Gare {
 		return this.stationGare.size();
 	}
 
-	/*
-	 * Permet di'initaliser l'id gare par rapport au tableau de gare dans la carte
+	/**
+	 * permet d'init gare id
+	 * @param i id de la gare 
 	 */
 	public void setGareId(int i) {
 		this.gareid = i;
 	}
+	
+	/**
+	 * permet d'init le nom
+	 * @param nom le nom de la gare
+	 */
 	public void setGareNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
 	 * Permet de récupérer l'id gare
-	 * @return
+	 * @return l'id de la gare
 	 */
 	public int getGareId() {
 		return this.gareid;
 	}
+	/**
+	 * Récupère le nom de la gare
+	 * @return le nom de la gare
+	 */
 	public String getGareNom() {
 		return this.nom;
 	}

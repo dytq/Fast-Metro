@@ -37,9 +37,9 @@ public class ClickSelectStation implements MouseListener {
 	/**
 	 * Initialise les composants necessaires quand on clique
 	 * 
-	 * @param panel
-	 * @param carte
-	 * @param dijkstra
+	 * @param panel le panel pour l'affichage
+	 * @param carte la carte 
+	 * @param dijkstra objet dijkstrea
 	 */
 	public ClickSelectStation(StationPanel panel, Carte carte, Dijkstra dijkstra) {
 		super();

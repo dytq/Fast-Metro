@@ -51,9 +51,9 @@ public class Lecture {
 	/**
 	 * Le parisGraphe.json à deux id stations
 	 * 
-	 * @param chemin
-	 * @param stationList
-	 * @param gareList
+	 * @param chemin chemin de lecture
+	 * @param stationList listes de stations
+	 * @return la liste des stations initilisées
 	 */
 	public ArrayList<Station> initGraphe(String chemin, ArrayList<Station> stationList) {
 		Reader reader;

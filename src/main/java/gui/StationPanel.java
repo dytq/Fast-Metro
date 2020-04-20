@@ -17,10 +17,13 @@ import javax.swing.JPanel;
  */
 public class StationPanel extends JPanel {
 
+	/* error */
 	private static final long serialVersionUID = -752649660103581438L;
 
+	/* liste des cercles pour l'affichage */
 	private LinkedList<Circle> circles = new LinkedList<Circle>();
-
+	
+	/* chemin de la carte */
 	private String cheminCarte;
 
 	/**
@@ -28,8 +31,7 @@ public class StationPanel extends JPanel {
 	 * ajoute une cercle sur une map donc c'est pourquoi on a cheminCarte (c'est ici
 	 * qu'on affiche la map)
 	 * 
-	 * @param cheminCarte
-	 * @param cheminEcriture
+	 * @param cheminCarte chemin de l'image
 	 */
 	public StationPanel(String cheminCarte) {
 		this.cheminCarte = cheminCarte;
@@ -38,7 +40,7 @@ public class StationPanel extends JPanel {
 	/**
 	 * Ajout d'un cercle dans une tableau
 	 * 
-	 * @param circle
+	 * @param circle le cercle 
 	 */
 	public void addCircle(Circle circle) {
 		circles.add(circle);
@@ -48,8 +50,8 @@ public class StationPanel extends JPanel {
 	/**
 	 * Change couleur station
 	 * 
-	 * @param color
-	 * @param id
+	 * @param color couleur
+	 * @param id du cercle
 	 */
 	public void setCircleColor(Color color, int id) {
 		circles.get(id).setColor(color);

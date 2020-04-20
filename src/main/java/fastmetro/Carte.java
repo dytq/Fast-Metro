@@ -62,6 +62,10 @@ public class Carte {
 		fenetre.printStation(gareList);
 	}
 
+	/**
+	 * Importe le graphe 
+	 * @param chemin de lecture
+	 */
 	public void importGraphe(String chemin) {
 		stationList = lecture.initGraphe(chemin, stationList);
 		int i = 0;

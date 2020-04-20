@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 
 /**
- * Ensemble des algorithmes permettant l'utilisation de dijkstra
+ * Ensemble des algorithmes permettant l'utilisation de dijkstra. Détailler dans le rapport.
  * 
  * @author dedarally taariq
  *
@@ -35,8 +35,7 @@ public class Dijkstra {
 	/**
 	 * Initialise les points d'entrée
 	 * 
-	 * @param stationDepart
-	 * @param stationArriver
+	 * @param carte la carte 
 	 */
 	public Dijkstra(Carte carte) {
 		this.carte = carte;
@@ -49,7 +48,7 @@ public class Dijkstra {
 	 * les initialisé dans la matrice de dijkstra et de retrouver le chemin en
 	 * partant de la station d'arrivée.
 	 * 
-	 * @param id
+	 * @param id id à ajouter
 	 */
 	public void addGareId(int id) {
 		ArrayList<Station> stationsGare = new ArrayList<Station>();
@@ -73,7 +72,7 @@ public class Dijkstra {
 	 * 
 	 * @param stationsGare
 	 * @param id
-	 * @return
+	 * @return le quai
 	 */
 	private Station getQuai(ArrayList<Station> stationsGare, int id) {
 		if (stationsGare.size() > 1) {
@@ -107,7 +106,7 @@ public class Dijkstra {
 	/**
 	 * Juste pour vérifier si l'utilisateur à cliquer sur deux gares valides
 	 * 
-	 * @return
+	 * @return si on a selectionée deux gares
 	 */
 	public boolean aDeuxGaresValider() {
 		if (nbrStation >= 2) {
@@ -121,9 +120,9 @@ public class Dijkstra {
 	 * Permet de calculer le plus court chemin. Détail du fonctionnement dans le
 	 * rapport
 	 * 
-	 * @param arrayList   liste des stations
-	 * @param stationList pour afficher le message
-	 * @return la liste des stations qui indique le chemin le plus courtsqxs<
+	 * @param stationList  liste des stations
+	 * @param str pour afficher le message
+	 * @return la liste des stations qui indique le chemin le plus court
 	 */
 	public ArrayList<Station> calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str) {
 		/* Matrice de Dijkstra détaillée dans le rapport */
@@ -168,7 +167,7 @@ public class Dijkstra {
 	 * Obtenir le min de la liste à traiter
 	 * 
 	 * @param matriceDijkstra_atraiter
-	 * @return
+	 * @return le minimum de dijkstra de la liste à traiter
 	 */
 	private int getMinDijkstra(Hashtable<Integer, CouplePereTemps> matriceDijkstra_atraiter) {
 		int min = (int) Math.pow(2, 31);
@@ -194,14 +193,13 @@ public class Dijkstra {
 	 * afficher.
 	 * 
 	 * @param matriceDijkstra
-	 * @return
+	 * @return la liste des chemins
 	 */
 	private ArrayList<Station> retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra,
 			ArrayList<String> str, ArrayList<Station> stationList) {
 
 		ArrayList<Station> stationListRes = new ArrayList<Station>();
-		// afficheMatrice(matriceDijkstra);
-		/* Si la stations d'arrivée est inaccésible */
+		/* Si la stations d'arrivée est inaccesible */
 		if (!matriceDijkstra.containsKey(stationArriver.getId())) {
 			stationListRes.add(stationDepart);
 			stationListRes.add(stationArriver);
@@ -230,9 +228,14 @@ public class Dijkstra {
 		return stationListRes;
 	}
 
+	/**
+	 * Permet d'afficher chaque station
+	 * @param str
+	 * @param station
+	 */
 	private void addToString(ArrayList<String> str, Station station) {
 		try {
-			str.add("->" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
+			str.add("☞" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
 		} catch (Exception e) {
 
 		}

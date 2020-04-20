@@ -9,11 +9,12 @@ import javax.swing.JPanel;
 /**
  * Simple cercle
  * 
- * @author user
+ * @author dedarally taariq
  *
  */
 public class Circle extends JPanel {
 
+	/* error */
 	private static final long serialVersionUID = 1L;
 
 	/* Coordonnées */
@@ -26,8 +27,7 @@ public class Circle extends JPanel {
 	/**
 	 * Cercle
 	 * 
-	 * @param x coords
-	 * @param y coords
+	 * @param point coords ( le centre du cercle)
 	 */
 	public Circle(Point point) {
 		super();
@@ -39,7 +39,7 @@ public class Circle extends JPanel {
 	/**
 	 * Caracteristique un cercle
 	 * 
-	 * @param g
+	 * @param g graphics
 	 */
 	public void draw(Graphics g) {
 		g.setColor(color);
@@ -49,7 +49,7 @@ public class Circle extends JPanel {
 	/**
 	 * Permet d'affecter une couleur à un cercle
 	 * 
-	 * @param color
+	 * @param color couleur du cercle
 	 */
 	public void setColor(Color color) {
 		this.color = color;

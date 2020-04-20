@@ -46,16 +46,24 @@ public class Station extends Gare {
 	/**
 	 * Obtenir l'identifiant d'une Station
 	 * 
-	 * @return
+	 * @return l'id de la station
 	 */
 	public int getId() {
 		return this.id;
 	}
 	
+	/**
+	 * Récupere le nom de la gare
+	 * @return le nom de la gare
+	 */
 	public String getNomGare() {
 		return this.getNom();
 	}
 	
+	/**
+	 * Permet copier les voisins de l'objet
+	 * @param voisin le voisin à copier
+	 */
 	public void setVoisin(ArrayList<CouplePereTemps> voisin) {
 		if (voisin != null) {
 			for (CouplePereTemps couple : voisin) {
@@ -67,7 +75,7 @@ public class Station extends Gare {
 	/**
 	 * Obtenir le numéro de ligne
 	 * 
-	 * @return
+	 * @return la ligne
 	 */
 	public int getLigne() {
 		return this.ligne;
@@ -84,8 +92,8 @@ public class Station extends Gare {
 	/**
 	 * Ajoute une couple de voisins à cette stations
 	 * 
-	 * @param station
-	 * @param date
+	 * @param station station 
+	 * @param date le temps
 	 */
 	public void addCoupleVoisin(Station station, int date) {
 		this.voisin.add(new CouplePereTemps(station.getId(), date));
@@ -94,7 +102,7 @@ public class Station extends Gare {
 	/**
 	 * Récupère les Couples des voisins stations à cette station
 	 * 
-	 * @return
+	 * @return le couple du voisin
 	 */
 	public ArrayList<CouplePereTemps> getVoisins() {
 		return voisin;
