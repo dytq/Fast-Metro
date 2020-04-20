@@ -121,38 +121,23 @@ public class Dijkstra {
 	 * Permet de calculer le plus court chemin. Détail du fonctionnement dans le
 	 * rapport
 	 * 
-	 * @param arrayList
-	 * 
-	 * @param stationList
-	 * 
+	 * @param arrayList   liste des stations
+	 * @param stationList pour afficher le message
 	 * @return la liste des stations qui indique le chemin le plus courtsqxs<
 	 */
 	public ArrayList<Station> calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str) {
 		/* Matrice de Dijkstra détaillée dans le rapport */
-		Hashtable<Station, CouplePereTemps> matriceDijkstra_atraiter = new Hashtable<Station, CouplePereTemps>();
-		Hashtable<Station, CouplePereTemps> matriceDijkstra_res = new Hashtable<Station, CouplePereTemps>();
+		Hashtable<Integer, CouplePereTemps> matriceDijkstra_atraiter = new Hashtable<Integer, CouplePereTemps>();
+		Hashtable<Integer, CouplePereTemps> matriceDijkstra_res = new Hashtable<Integer, CouplePereTemps>();
 
 		/* Initialisation */
-		matriceDijkstra_atraiter.put(stationDepart, new CouplePereTemps(stationDepart, 0));
-
-		for (CouplePereTemps station : stationDepart.getVoisins()) {
-			if (!(matriceDijkstra_res.containsKey(station.getStation()))) {
-
-				matriceDijkstra_atraiter.put(station.getStation(), new CouplePereTemps(stationDepart,
-						matriceDijkstra_atraiter.get(stationDepart).getTemps() + station.getTemps()));
-			}
-		}
-
-		matriceDijkstra_res.put(stationDepart, matriceDijkstra_atraiter.get(stationDepart));
-		matriceDijkstra_atraiter.remove(stationDepart);
-
+		matriceDijkstra_atraiter.put(stationDepart.getId(), new CouplePereTemps(stationDepart.getId(), 0));
+		int station = stationDepart.getId();
 		/* Boucle */
 
 		while (!matriceDijkstra_atraiter.isEmpty()) {
 
-			Station station = getMinDijkstra(matriceDijkstra_atraiter);
-
-			for (CouplePereTemps couple : stationList.get(station.getId()).getVoisins()) {
+			for (CouplePereTemps couple : stationList.get(station).getVoisins()) {
 
 				if (!(matriceDijkstra_res.containsKey(couple.getStation()))) {
 
@@ -161,7 +146,7 @@ public class Dijkstra {
 						if (matriceDijkstra_atraiter.get(couple.getStation())
 								.getTemps() < matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()) {
 
-							matriceDijkstra_atraiter.put(couple.getStation(), new CouplePereTemps(stationDepart,
+							matriceDijkstra_atraiter.put(couple.getStation(), new CouplePereTemps(station,
 									matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()));
 						}
 					} else {
@@ -170,27 +155,37 @@ public class Dijkstra {
 					}
 				}
 			}
+
 			matriceDijkstra_res.put(station, matriceDijkstra_atraiter.get(station));
 			matriceDijkstra_atraiter.remove(station);
+
+			station = getMinDijkstra(matriceDijkstra_atraiter);
 		}
-		return retrouveChemin(matriceDijkstra_res,str);
+		return retrouveChemin(matriceDijkstra_res, str, stationList);
 	}
 
-	private Station getMinDijkstra(Hashtable<Station, CouplePereTemps> matriceDijkstra_atraiter) {
+	/**
+	 * Obtenir le min de la liste à traiter
+	 * 
+	 * @param matriceDijkstra_atraiter
+	 * @return
+	 */
+	private int getMinDijkstra(Hashtable<Integer, CouplePereTemps> matriceDijkstra_atraiter) {
 		int min = (int) Math.pow(2, 31);
-		Station e = null;
+		int e = 0;
 		int tempsTmp = 0;
 
-		Iterator<Entry<Station, CouplePereTemps>> it = matriceDijkstra_atraiter.entrySet().iterator();
+		Iterator<Entry<Integer, CouplePereTemps>> it = matriceDijkstra_atraiter.entrySet().iterator();
 
 		while (it.hasNext()) {
-			Entry<Station, CouplePereTemps> element = it.next();
+			Entry<Integer, CouplePereTemps> element = it.next();
 			tempsTmp = element.getValue().getTemps();
 			if (Math.min(min, tempsTmp) != min) {
 				min = tempsTmp;
 				e = element.getKey();
 			}
 		}
+
 		return e;
 	}
 
@@ -201,46 +196,45 @@ public class Dijkstra {
 	 * @param matriceDijkstra
 	 * @return
 	 */
-	private ArrayList<Station> retrouveChemin(Hashtable<Station, CouplePereTemps> matriceDijkstra,
-			ArrayList<String> str) {
+	private ArrayList<Station> retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra,
+			ArrayList<String> str, ArrayList<Station> stationList) {
+
 		ArrayList<Station> stationListRes = new ArrayList<Station>();
-		System.out.println(matriceDijkstra.size());
-		//afficheMatrice(matriceDijkstra);
-		/* Station de Départ pour la remonter des stations */
-		if (!matriceDijkstra.containsKey(stationArriver)) {
+		// afficheMatrice(matriceDijkstra);
+		/* Si la stations d'arrivée est inaccésible */
+		if (!matriceDijkstra.containsKey(stationArriver.getId())) {
 			stationListRes.add(stationDepart);
 			stationListRes.add(stationArriver);
 			JOptionPane.showMessageDialog(null, "Ouh! Ligne non connecté");
 			return stationListRes;
 		}
+		/* Initialisation */
 		CouplePereTemps couple;
-		couple = matriceDijkstra.get(stationArriver);
-		addToString(str,stationArriver);
+		couple = matriceDijkstra.get(stationArriver.getId());
+		addToString(str, stationArriver);
 		stationListRes.add(stationArriver);
-		Station station = couple.getStation();
-		while (station.getId() != stationDepart.getId()) {
-			addToString(str,station);
-			stationListRes.add(station);
+
+		int station = couple.getStation();
+
+		/* Boucle pour remonter les stations */
+		while (station != stationDepart.getId()) {
+			addToString(str, stationList.get(station));
+			stationListRes.add(stationList.get(station));
 			couple = matriceDijkstra.get(station);
 			station = couple.getStation();
 		}
-		addToString(str,stationDepart);
+
+		addToString(str, stationDepart);
 		stationListRes.add(stationDepart);
+
 		return stationListRes;
 	}
-	private void addToString(ArrayList<String> str,Station station) {
+
+	private void addToString(ArrayList<String> str, Station station) {
 		try {
-			str.add("☞" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
+			str.add("->" + "On passe par " + station.getGareNom() + " Ligne: " + station.getLigne() + "\n");
 		} catch (Exception e) {
 
-		}
-	}
-	private void afficheMatrice(Hashtable<Station, CouplePereTemps> matriceDijkstra) {
-		Iterator<Entry<Station, CouplePereTemps>> it = matriceDijkstra.entrySet().iterator();
-
-		while (it.hasNext()) {
-			Entry<Station, CouplePereTemps> element = it.next();
-			System.out.println(element.getKey());
 		}
 	}
 }

@@ -1,19 +1,19 @@
 package fastmetro;
 
 public class CouplePereTemps {
-	private Station station;
+	private int station;
 	private int temps;
 
-	CouplePereTemps(Station station, int temps) {
+	CouplePereTemps(int station, int temps) {
 		this.setStation(station);
 		this.setTemps(temps);
 	}
 
-	public Station getStation() {
+	public int getStation() {
 		return station;
 	}
 
-	public void setStation(Station station) {
+	public void setStation(int station) {
 		this.station = station;
 	}
 
@@ -27,7 +27,7 @@ public class CouplePereTemps {
 
 	@Override
 	public String toString() {
-		return "Station: " + station.getId() + " Temps: " + this.temps;
+		return "Station: " + station + " Temps: " + this.temps;
 	}
 
 }

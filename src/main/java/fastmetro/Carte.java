@@ -44,20 +44,10 @@ public class Carte {
 		this.nom = nom;
 		this.cheminCarte = cheminCarte;
 	}
-
-	/**
-	 * Permet d'écrire les stations : obsolète
-	 * 
-	 * @param chemin
-	 */
-	// public void drawStation(String chemin) {
-	// fenetre.addStation(chemin);
-	// }
-
 	/**
 	 * Importe des stations
 	 * 
-	 * @param chemin
+	 * @param chemin d'écriture
 	 */
 	public void importStations(String chemin) {
 		setGareList(lecture.initStation(chemin, getGareList()));
@@ -143,7 +133,7 @@ public class Carte {
 	/**
 	 * Recupère la liste des stations
 	 * 
-	 * @return
+	 * @return retour la liste des stations
 	 */
 	public ArrayList<Station> getStationList() {
 		return stationList;

@@ -88,7 +88,7 @@ public class Station extends Gare {
 	 * @param date
 	 */
 	public void addCoupleVoisin(Station station, int date) {
-		this.voisin.add(new CouplePereTemps(station, date));
+		this.voisin.add(new CouplePereTemps(station.getId(), date));
 	}
 
 	/**
