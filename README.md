@@ -10,7 +10,7 @@ Avoir installer la machine virtuelle java pour l'execution des logiciels java, p
 java -jar releases/app/\*.jar
 
 # Mode d'Emploi
-On selectionnne les deux stations qu'on souhaite voir le plus court chemin. Si on est dans une gare traversée par plusieurs stations, on selectionne la ligne souhaité. On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
+On selectionnne les deux stations qu'on souhaite voir le plus court chemin. Si on est dans une gare traversée par plusieurs stations, on selectionne la ligne souhaité via un menu déroulant. On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
 
 # Explication de la structure du projet global
 Voici un résumé de la structure du projet:
