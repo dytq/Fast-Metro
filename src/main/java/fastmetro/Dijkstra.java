@@ -8,7 +8,8 @@ import java.util.Map.Entry;
 import javax.swing.JOptionPane;
 
 /**
- * Ensemble des algorithmes permettant l'utilisation de dijkstra. Détailler dans le rapport.
+ * Ensemble des algorithmes permettant l'utilisation de dijkstra. Détailler dans
+ * le rapport.
  * 
  * @author dedarally taariq
  *
@@ -35,7 +36,7 @@ public class Dijkstra {
 	/**
 	 * Initialise les points d'entrée
 	 * 
-	 * @param carte la carte 
+	 * @param carte la carte
 	 */
 	public Dijkstra(Carte carte) {
 		this.carte = carte;
@@ -120,11 +121,12 @@ public class Dijkstra {
 	 * Permet de calculer le plus court chemin. Détail du fonctionnement dans le
 	 * rapport
 	 * 
-	 * @param stationList  liste des stations
-	 * @param str pour afficher le message
+	 * @param stationList liste des stations
+	 * @param str         pour afficher le message
 	 * @return la liste des stations qui indique le chemin le plus court
 	 */
-	public int calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str, ArrayList<Station>stationListRes) {
+	public int calculPlusCourtChemin(ArrayList<Station> stationList, ArrayList<String> str,
+			ArrayList<Station> stationListRes) {
 		/* Matrice de Dijkstra détaillée dans le rapport */
 		Hashtable<Integer, CouplePereTemps> matriceDijkstra_atraiter = new Hashtable<Integer, CouplePereTemps>();
 		Hashtable<Integer, CouplePereTemps> matriceDijkstra_res = new Hashtable<Integer, CouplePereTemps>();
@@ -144,7 +146,7 @@ public class Dijkstra {
 
 						if (matriceDijkstra_atraiter.get(couple.getStation())
 								.getTemps() < matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()) {
-
+							
 							matriceDijkstra_atraiter.put(couple.getStation(), new CouplePereTemps(station,
 									matriceDijkstra_atraiter.get(station).getTemps() + couple.getTemps()));
 						}
@@ -195,8 +197,8 @@ public class Dijkstra {
 	 * @param matriceDijkstra
 	 * @return la liste des chemins
 	 */
-	private int retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra,
-			ArrayList<String> str, ArrayList<Station> stationList,ArrayList<Station> stationListRes) {
+	private int retrouveChemin(Hashtable<Integer, CouplePereTemps> matriceDijkstra, ArrayList<String> str,
+			ArrayList<Station> stationList, ArrayList<Station> stationListRes) {
 
 		/* Si la stations d'arrivée est inaccesible */
 		if (!matriceDijkstra.containsKey(stationArriver.getId())) {
@@ -228,12 +230,13 @@ public class Dijkstra {
 
 	/**
 	 * Permet d'afficher chaque station
+	 * 
 	 * @param str
 	 * @param station
 	 */
 	private void addToString(ArrayList<String> str, Station station) {
 		try {
-			str.add("☞" + "Prendre la station " + station.getGareNom() + " : Ligne " + station.getLigne() + "\n");
+			str.add("->" + "Prendre la station " + station.getGareNom() + " : Ligne " + station.getLigne() + "\n");
 		} catch (Exception e) {
 
 		}
