@@ -87,7 +87,7 @@ public class Dijkstra {
 			String ligneEntree = new String();
 			do {
 				ligneEntree = (String) JOptionPane.showInputDialog(null, "Dans quel quai vous êtes ?", "Fast Metro",
-						JOptionPane.QUESTION_MESSAGE, null, mesOptions, mesOptions[1]);
+						JOptionPane.QUESTION_MESSAGE, null, mesOptions, mesOptions[0]);
 			} while (ligneEntree == null); // Forcer l'utilisateur à selectionner une ligne
 			try {
 				ligne = Integer.parseInt(ligneEntree);
@@ -139,7 +139,7 @@ public class Dijkstra {
 		while (!matriceDijkstra_atraiter.isEmpty()) {
 
 			for (CouplePereTemps couple : stationList.get(station).getVoisins()) {
-
+				
 				if (!(matriceDijkstra_res.containsKey(couple.getStation()))) {
 
 					if (matriceDijkstra_atraiter.containsKey(couple.getStation())) {
@@ -156,7 +156,7 @@ public class Dijkstra {
 					}
 				}
 			}
-
+			
 			matriceDijkstra_res.put(station, matriceDijkstra_atraiter.get(station));
 			matriceDijkstra_atraiter.remove(station);
 
@@ -212,7 +212,7 @@ public class Dijkstra {
 		couple = matriceDijkstra.get(stationArriver.getId());
 		addToString(str, stationArriver);
 		stationListRes.add(stationArriver);
-
+		
 		int station = couple.getStation();
 
 		/* Boucle pour remonter les stations */
@@ -225,7 +225,7 @@ public class Dijkstra {
 
 		addToString(str, stationDepart);
 		stationListRes.add(stationDepart);
-		return matriceDijkstra.get(stationArriver.getGareId()).getTemps();
+		return matriceDijkstra.get(stationArriver.getId()).getTemps();
 	}
 
 	/**
