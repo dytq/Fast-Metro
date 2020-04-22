@@ -6,8 +6,7 @@ Je présente en premier lieu la structure global du projet, ensuite je rentre un
 Fast-Metro est un logiciel permettant de trouver le plus court chemin entre deux stations de métro. Ce logiciel est programmée avec Java, j'utilise: Jframe (bibliothèque graphique native de Java), Maven (pour les dépendances) et du standard Json, librairie Gson (lire et écrire sur un fichier) pour faciliter les transferts de données.
 
 # Execution
-Avoir installer la machine virtuelle java pour l'execution des logiciels java, puis:
-java -jar releases/app/\*.jar
+Double clique sur Compte-1.0-SNAPSHOT dans releases/app
 
 # Mode d'Emploi
 On selectionnne les deux stations qu'on souhaite voir le plus court chemin. Si on est dans une gare traversée par plusieurs stations, on selectionne la ligne souhaité via un menu déroulant. On clic. Le logiciel va afficher le plus court chemin. On clic pour reinitialiser la carte. 
