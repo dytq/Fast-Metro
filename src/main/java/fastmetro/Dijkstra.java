@@ -236,7 +236,7 @@ public class Dijkstra {
 	 */
 	private void addToString(ArrayList<String> str, Station station) {
 		try {
-			str.add("->" + "Prendre la station " + station.getGareNom() + " : Ligne " + station.getLigne() + "\n");
+			str.add("☞" + "Prendre la station " + station.getGareNom() + " : Ligne " + station.getLigne() + "🗸"+"\n");
 		} catch (Exception e) {
 
 		}

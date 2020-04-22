@@ -77,13 +77,14 @@ javadoc dans Documentation/index.html
 
 ## Screencapture
 
+Petite exemple entre Chatelet et Porte de la Vilette:
+
 ![screen capture](image/c1.png)
 ![screen capture](image/c2.png)
 ![screen capture](image/c3.png)
 ![screen capture](image/c4.png)
 ![screen capture](image/c5.png)
 ![screen capture](image/c6.png)
-
 
 ## Disponible sur github
 \url{https://github.com/dytq/Fast-Metro}
